@@ -6,10 +6,14 @@ title: 组件总览
 
 Develop Plugins 提供了丰富的 Vue 3 组件，涵盖了常见的业务场景和功能需求。
 
+<script setup>
+import { withBase } from 'vitepress'
+</script>
+
 ## 📊 数据展示
 <n-grid cols="2" x-gap="16" y-gap="16">
   <n-gi>
-    <a href="/components/chart" style="text-decoration: none; color: inherit;">
+    <a :href="withBase('/components/chart')" style="text-decoration: none; color: inherit;">
       <n-card hoverable size="small">
         <n-space vertical size="small">
           <strong>Chart 图表</strong>
@@ -19,7 +23,7 @@ Develop Plugins 提供了丰富的 Vue 3 组件，涵盖了常见的业务场景
     </a>
   </n-gi>
   <n-gi>
-    <a href="/components/org-chart" style="text-decoration: none; color: inherit;">
+    <a :href="withBase('/components/org-chart')" style="text-decoration: none; color: inherit;">
       <n-card hoverable size="small">
         <n-space vertical size="small">
           <strong>OrgChart 组织架构图</strong>
@@ -33,7 +37,7 @@ Develop Plugins 提供了丰富的 Vue 3 组件，涵盖了常见的业务场景
 ## 📄 文档预览
 <n-grid cols="2" x-gap="16" y-gap="16">
   <n-gi>
-    <a href="/components/excel-preview" style="text-decoration: none; color: inherit;">
+    <a :href="withBase('/components/excel-preview')" style="text-decoration: none; color: inherit;">
       <n-card hoverable size="small">
         <n-space vertical size="small">
           <strong>ExcelPreview Excel 预览</strong>
@@ -43,7 +47,7 @@ Develop Plugins 提供了丰富的 Vue 3 组件，涵盖了常见的业务场景
     </a>
   </n-gi>
   <n-gi>
-    <a href="/components/pdf-preview" style="text-decoration: none; color: inherit;">
+    <a :href="withBase('/components/pdf-preview')" style="text-decoration: none; color: inherit;">
       <n-card hoverable size="small">
         <n-space vertical size="small">
           <strong>PDFPreview PDF 预览</strong>
@@ -57,7 +61,7 @@ Develop Plugins 提供了丰富的 Vue 3 组件，涵盖了常见的业务场景
 ## 🎨 UI组件
 <n-grid cols="2" x-gap="16" y-gap="16">
   <n-gi>
-    <a href="/components/x-message" style="text-decoration: none; color: inherit;">
+    <a :href="withBase('/components/x-message')" style="text-decoration: none; color: inherit;">
       <n-card hoverable size="small">
         <n-space vertical size="small">
           <strong>XMessage 全局消息</strong>
@@ -67,7 +71,7 @@ Develop Plugins 提供了丰富的 Vue 3 组件，涵盖了常见的业务场景
     </a>
   </n-gi>
   <n-gi>
-    <a href="/components/x-scroll" style="text-decoration: none; color: inherit;">
+    <a :href="withBase('/components/x-scroll')" style="text-decoration: none; color: inherit;">
       <n-card hoverable size="small">
         <n-space vertical size="small">
           <strong>XScroll 自定义滚动</strong>
@@ -77,7 +81,7 @@ Develop Plugins 提供了丰富的 Vue 3 组件，涵盖了常见的业务场景
     </a>
   </n-gi>
   <n-gi>
-    <a href="/components/text-ellipsis" style="text-decoration: none; color: inherit;">
+    <a :href="withBase('/components/text-ellipsis')" style="text-decoration: none; color: inherit;">
       <n-card hoverable size="small">
         <n-space vertical size="small">
           <strong>TextEllipsis 文本省略</strong>
@@ -87,7 +91,7 @@ Develop Plugins 提供了丰富的 Vue 3 组件，涵盖了常见的业务场景
     </a>
   </n-gi>
   <n-gi>
-    <a href="/components/water-mark" style="text-decoration: none; color: inherit;">
+    <a :href="withBase('/components/water-mark')" style="text-decoration: none; color: inherit;">
       <n-card hoverable size="small">
         <n-space vertical size="small">
           <strong>WaterMark 水印</strong>
