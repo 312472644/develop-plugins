@@ -3,7 +3,7 @@ import baseConfig from "./base-config.mjs";
 import { sidebar, socialLinks, nav } from "../routers";
 
 // https://vitepress.dev/zh/reference/site-config
-export default defineConfig((mode) => {
+export default defineConfig(({ mode }) => {
   return {
     ...baseConfig,
     themeConfig: {
@@ -25,10 +25,9 @@ export default defineConfig((mode) => {
         copyright: "Copyright © 2024-present Sugar",
       },
     },
+    base: mode === "production" ? "/develop-plugins/" : "/",
     vite: {
-      base: mode === "production" ? "/develop-plugins/" : "/",
       build: {
-        ssr: false,
         chunkSizeWarningLimit: 2000,
         rollupOptions: {
           output: {
