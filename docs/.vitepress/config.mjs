@@ -5,7 +5,7 @@ import { sidebar, socialLinks, nav } from "../routers";
 // https://vitepress.dev/zh/reference/site-config
 export default defineConfig(({ mode }) => {
   return {
-    ...baseConfig,
+    ...baseConfig(mode),
     themeConfig: {
       logo: "/orange.svg",
       nav,

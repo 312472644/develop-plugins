@@ -63,6 +63,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  lang: {
+    type: String,
+    default: "vue",
+  },
 });
 
 const transformHtml = ref(null);
@@ -87,7 +91,7 @@ const handleToggle = () => {
 
 const initHighlighter = async () => {
   const html = await codeToHtml(props.code, {
-    lang: "javascript",
+    lang: props.lang,
     theme: "houston",
   });
   transformHtml.value = html;
