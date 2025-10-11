@@ -1,0 +1,38 @@
+{
+  "name": "@develop-plugins/directive",
+  "version": "0.0.7",
+  "description": "vue3工具指令",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "vite build --config ../base.config.js"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "directive",
+    "tool"
+  ],
+  "author": "xx",
+  "license": "ISC",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://312472644.github.io/",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  }
+}

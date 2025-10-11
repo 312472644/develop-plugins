@@ -1,0 +1,39 @@
+{
+  "name": "@develop-plugins/x-message",
+  "version": "0.0.3",
+  "description": "一个轻量级的消息提示组件，支持不同类型和大小的消息展示。",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "vite build --config ../base.config.js",
+    "prepublishOnly": "npm run build & node ../version.js"
+  },
+  "keywords": [
+    "vue3"
+  ],
+  "author": "xx",
+  "license": "ISC",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://312472644.github.io/",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "terser": "^5.31.1"
+  }
+}

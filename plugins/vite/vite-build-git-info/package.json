@@ -1,0 +1,41 @@
+{
+  "name": "@develop-plugins/vite-build-git-info",
+  "version": "0.0.2",
+  "description": "浏览器控制台中查看最新一次git提交记录信息",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "prepublishOnly": "pnpm run build"
+  },
+  "author": "xx",
+  "repository": {
+    "url": "xx31247244@163.com"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "keywords": [
+    "vite",
+    "build",
+    "git"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "license": "ISC",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@develop-plugins/build": "workspace:^"
+  }
+}

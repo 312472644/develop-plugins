@@ -1,0 +1,50 @@
+{
+  "name": "@develop-plugins/excel-preview",
+  "version": "0.1.4",
+  "description": "一个基于 Vue3 的 Excel 预览和编辑组件，支持导入导出 Excel 文件，以及在线编辑表格数据。",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "prepublishOnly": "npm run build & node ../version.js",
+    "postinstall": "node ./copy-worker.cjs"
+  },
+  "keywords": [
+    "vue3",
+    "edit",
+    "excel-preview",
+    "excel-edit",
+    "excel-table"
+  ],
+  "author": "xx",
+  "license": "ISC",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "copy-worker.cjs"
+  ],
+  "homepage": "https://312472644.github.io/",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@develop-plugins/x-message": "^0.0.2",
+    "@handsontable/vue3": "^15.2.0",
+    "exceljs": "^4.4.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "terser": "^5.31.1"
+  }
+}

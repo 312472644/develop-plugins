@@ -1,0 +1,11 @@
+node_modules
+
+dist
+
+*.log
+
+.idea
+
+/plugins/**/package-lock.json
+
+docs/.vitepress/cache/

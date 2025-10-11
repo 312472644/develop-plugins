@@ -1,0 +1,43 @@
+{
+  "name": "@develop-plugins/webpack-generate-zip",
+  "version": "0.0.1",
+  "description": "webpack打包生成压缩文件",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "prepublishOnly": "pnpm run build"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "build",
+    "zip",
+    "compression"
+  ],
+  "author": "xx",
+  "license": "ISC",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "dependencies": {
+    "archiver": "^7.0.1"
+  },
+  "devDependencies": {
+    "@develop-plugins/build": "workspace:^"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

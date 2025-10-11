@@ -1,0 +1,43 @@
+{
+  "name": "@develop-plugins/pdf-export",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "vite build"
+  },
+  "keywords": [
+    "pdf",
+    "export",
+    "jspdf",
+    "javascript"
+  ],
+  "author": "xx",
+  "license": "ISC",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "dependencies": {
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.4"
+  },
+  "devDependencies": {
+    "@develop-plugins/build": "workspace:^"
+  },
+  "homepage": "https://312472644.github.io/",
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "@develop-plugins/org-chart",
+  "version": "0.0.2",
+  "description": "组织图可视化分层组织数据。",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "vite build --config ../base.config.js",
+    "prepublishOnly": "npm run build & node ../version.js"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "organization",
+    "org-chart",
+    "chart",
+    "plugin"
+  ],
+  "author": "xx",
+  "types": "./index.d.ts",
+  "license": "ISC",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://312472644.github.io/",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  }
+}

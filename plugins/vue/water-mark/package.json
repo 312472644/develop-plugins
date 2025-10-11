@@ -1,0 +1,43 @@
+{
+  "name": "@develop-plugins/water-mark",
+  "version": "0.0.9",
+  "description": "给页面的某个区域加上水印。",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "vite build --config ../base.config.js",
+    "prepublishOnly": "npm run build & node ../version.js"
+  },
+  "keywords": [
+    "vue3",
+    "water-mark",
+    "mark"
+  ],
+  "author": "xx",
+  "license": "ISC",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "homepage": "https://312472644.github.io/",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "terser": "^5.31.1"
+  }
+}

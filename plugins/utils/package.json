@@ -1,0 +1,35 @@
+{
+  "name": "@develop-plugins/utils",
+  "version": "0.0.1",
+  "description": "工具库",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "vite build"
+  },
+  "keywords": [
+    "tools",
+    "utils",
+    "promise-utils"
+  ],
+  "author": "xx",
+  "license": "ISC",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "devDependencies": {
+    "@develop-plugins/build": "workspace:^"
+  },
+  "homepage": "https://312472644.github.io/"
+}

@@ -1,0 +1,29 @@
+{
+  "name": "develop-plugins",
+  "version": "0.0.2",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "dev:vue": "pnpm -F @develop-plugins/vue-web run dev",
+    "build:docs": "pnpm -F @develop-plugins/docs run docs:build",
+    "build:build-plugins": "pnpm -F @develop-plugins/build run build",
+    "build:vite-build-git-info": "pnpm run build:build-plugins & pnpm -F @develop-plugins/vite-build-git-info run build",
+    "build:vite-generate-zip": "pnpm run build:build-plugins & pnpm -F @develop-plugins/vite-generate-zip run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "sass": "^1.77.6",
+    "vite": "^5.2.12",
+    "vite-plugin-vue-setup-extend": "^0.4.0"
+  },
+  "dependencies": {
+    "vite-plugin-css-injected-by-js": "^3.5.2",
+    "vue": "^3.4.27"
+  }
+}

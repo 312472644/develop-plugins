@@ -1,0 +1,9 @@
+packages:
+# 构建
+- 'build'
+# 示例
+- 'examples/**'
+# 插件
+- 'plugins/**'
+# 文档
+- 'docs'

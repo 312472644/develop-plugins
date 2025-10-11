@@ -1,0 +1,26 @@
+{
+  "name": "@develop-plugins/vue-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@develop-plugins/directive": "workspace:^",
+    "@develop-plugins/org-chart": "workspace:^",
+    "@develop-plugins/text-ellipsis": "workspace:^",
+    "@develop-plugins/water-mark": "workspace:^",
+    "@develop-plugins/chart": "workspace:^",
+    "@unocss/preset-rem-to-px": "^0.62.4",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "ant-design-vue": "4.x",
+    "unocss": "^0.62.4",
+    "vite": "^5.2.0"
+  }
+}

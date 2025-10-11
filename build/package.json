@@ -1,0 +1,20 @@
+{
+  "name": "@develop-plugins/build",
+  "version": "0.0.1",
+  "description": "构建工具打包工具类",
+  "main": "index.js",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

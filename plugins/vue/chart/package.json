@@ -1,0 +1,46 @@
+{
+  "name": "@develop-plugins/chart",
+  "version": "0.0.2",
+  "description": "基于 Vue3 和 ECharts 的图表插件。",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "vite build --config ../base.config.js",
+    "prepublishOnly": "npm run build & node ../version.js"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "chart",
+    "echarts"
+  ],
+  "author": "xx",
+  "types": "./index.d.ts",
+  "license": "ISC",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "homepage": "https://312472644.github.io/",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "echarts": "^5.4.2"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "volta": {
+    "node": "20.19.2"
+  }
+}
