@@ -45,8 +45,8 @@ importers:
         specifier: ^0.0.7
         version: 0.0.7(vue@3.5.22(typescript@4.1.2))
       '@develop-plugins/excel-preview':
-        specifier: ^0.1.4
-        version: 0.1.4(handsontable@16.1.1)(vue@3.5.22(typescript@4.1.2))
+        specifier: ^0.1.5
+        version: 0.1.5(handsontable@16.1.1)(vue@3.5.22(typescript@4.1.2))
       '@develop-plugins/org-chart':
         specifier: ^0.0.2
         version: 0.0.2(vue@3.5.22(typescript@4.1.2))
@@ -412,8 +412,8 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  '@develop-plugins/excel-preview@0.1.4':
-    resolution: {integrity: sha512-9YLqgjcG6GlUjeR8ZYe9MwTMIcAi/i8K4sNOmjXScvBfupu7E2obe0LMqiBkIwEAZU0FRdEr69uefYtgbNKHcQ==}
+  '@develop-plugins/excel-preview@0.1.5':
+    resolution: {integrity: sha512-HPMFatg9PV9e36uUMqwzzqsnvJlg2B3lsu0/RV3JXz30TCTT0HCIG8bfh94YtwIKBicc2lNRZU7AnNa3hVPBwg==}
     engines: {node: '>=18'}
     peerDependencies:
       vue: ^3.0.0
@@ -3040,7 +3040,7 @@ snapshots:
     dependencies:
       vue: 3.5.22(typescript@4.1.2)
 
-  '@develop-plugins/excel-preview@0.1.4(handsontable@16.1.1)(vue@3.5.22(typescript@4.1.2))':
+  '@develop-plugins/excel-preview@0.1.5(handsontable@16.1.1)(vue@3.5.22(typescript@4.1.2))':
     dependencies:
       '@develop-plugins/x-message': 0.0.2(vue@3.5.22(typescript@4.1.2))
       '@handsontable/vue3': 15.3.0(handsontable@16.1.1)(vue@3.5.22(typescript@4.1.2))

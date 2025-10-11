@@ -16,7 +16,6 @@ npm install @develop-plugins/excel-preview
 
 ```javascript
 import ExcelPreview from "@develop-plugins/excel-preview";
-import "@develop-plugins/excel-preview/style.css";
 ```
 
 ### 基础用法

@@ -89,7 +89,7 @@ import Loading from "../x-loading/index.vue";
 import Toolbar from "./Toolbar.vue";
 import SheetTabs from "./SheetTabs.vue";
 import XMessage from "@develop-plugins/x-message";
-import "@develop-plugins/x-message/style.css";
+import ExcelExportWorker from './excel-export.worker.js?worker&inline';
 
 // 样式导入
 import "handsontable/styles/handsontable.min.css";
@@ -204,7 +204,8 @@ const exportBtnDisabled = ref(false);
 const sheetTabList = ref([]);
 
 const currentScope = effectScope();
-const worker = new Worker(new URL("./excel-export.worker.js", import.meta.url), { type: "module" });
+// const worker = new Worker(new URL("./excel-export.worker.js", import.meta.url), { type: "module" });
+const worker = new ExcelExportWorker();
 
 const loadingHeight = computed(() => {
   const tabHeight = SheetTabsRef.value.$el.offsetHeight;
