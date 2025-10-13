@@ -1,6 +1,6 @@
-import JsPdf from 'jspdf';
-import autoTable from 'jspdf-autotable';
-import './YeZiGongChangWanNengHeiTi-2-normal';
+import JsPdf from "jspdf";
+import autoTable from "jspdf-autotable";
+import "./YeZiGongChangWanNengHeiTi-2-normal";
 
 class PdfExport {
   // jspdf对象
@@ -41,12 +41,11 @@ class PdfExport {
     const pageWidth = pdfExport.internal.pageSize.width;
     const pageHeight = pdfExport.internal.pageSize.height;
     // 设置字体
-    pdfExport.setFont('YeZiGongChangWanNengHeiTi-2');
+    pdfExport.setFont("YeZiGongChangWanNengHeiTi-2");
     this.#pageNumbersHeight = this.#showPageNumbers ? 10 : 0;
     this.#pageWidth = pageWidth;
     this.#pageHeight = pageHeight;
-    this.#contentHeight =
-      pageHeight - this.#padding * 2 - this.#pageNumbersHeight;
+    this.#contentHeight = pageHeight - this.#padding * 2 - this.#pageNumbersHeight;
     this.#contentWidth = pageWidth - this.#padding * 2;
     this.#pdfExport = pdfExport;
   }
@@ -69,12 +68,12 @@ class PdfExport {
    */
   #mergeConfig(config = {}) {
     const defaultConfig = {
-      orientation: 'p',
-      unit: 'mm',
-      format: 'a4',
+      orientation: "p",
+      unit: "mm",
+      format: "a4",
       putOnlyUsedFonts: true,
     };
-    this.#padding = typeof config?.padding === 'number' ? config.padding : 10;
+    this.#padding = typeof config?.padding === "number" ? config.padding : 10;
     this.#showPageNumbers = config.showPageNumbers || false;
     const clone = { ...defaultConfig, ...config };
     delete clone.padding;
@@ -87,13 +86,13 @@ class PdfExport {
    * @param {string} text
    * @param {'left'|'center'|'right'} position
    */
-  #getTextLeftPosition(text, position = 'left') {
+  #getTextLeftPosition(text, position = "left") {
     if (!text || !position) return;
     const textWidth = this.#pdfExport.getTextWidth(text);
-    if (position === 'center') {
+    if (position === "center") {
       return (this.#pageWidth - textWidth) / 2;
     }
-    if (position === 'right') {
+    if (position === "right") {
       return this.#pageWidth - textWidth - this.#padding;
     }
     return this.#padding;
@@ -105,7 +104,7 @@ class PdfExport {
    * @returns {boolean}
    */
   #checkPositionIsValid(position) {
-    const validPositions = ['left', 'center', 'right'];
+    const validPositions = ["left", "center", "right"];
     if (!validPositions.includes(position) && position) {
       console.warn(`文本位置：【${position}】不合法, 支持left、center、right`);
       return false;
@@ -129,7 +128,7 @@ class PdfExport {
       // 将文本拆成多行
       const splitTextList = doc.splitTextToSize(text, this.#contentWidth) || [];
       if (splitTextList.length > 1 && position) {
-        console.warn('多行文本不支持文本位置');
+        console.warn("多行文本不支持文本位置");
         return;
       }
       // 文本位置
@@ -138,10 +137,7 @@ class PdfExport {
         // 计算当前文本行高度
         const lineHeight = doc.getTextDimensions(item).h;
         // 分页
-        if (
-          this.#startY + lineHeight >
-          this.#pageHeight - this.#pageNumbersHeight
-        ) {
+        if (this.#startY + lineHeight > this.#pageHeight - this.#pageNumbersHeight) {
           doc.addPage();
           this.#generatePageNumbers();
           // 分页后重新计算
@@ -163,11 +159,7 @@ class PdfExport {
     const yPoint = this.#pageHeight - this.#pageNumbersHeight;
     doc.line(this.#padding, yPoint, this.#pageWidth - this.#padding, yPoint);
     const text = `第 ${currentPage} 页`;
-    doc.text(
-      text,
-      this.#getTextLeftPosition(text, 'center'),
-      yPoint + this.#pageNumbersHeight / 2
-    );
+    doc.text(text, this.#getTextLeftPosition(text, "center"), yPoint + this.#pageNumbersHeight / 2);
   }
 
   /**
@@ -182,19 +174,19 @@ class PdfExport {
     if (!Reflect.ownKeys(config).length) return;
     const doc = this.#pdfExport;
     autoTable(doc, {
-      theme: 'striped',
+      theme: "striped",
       margin: 0,
       headStyles: {
-        fillColor: '#ebeef2',
-        textColor: '#000',
+        fillColor: "#ebeef2",
+        textColor: "#000",
       },
       styles: {
-        font: 'YeZiGongChangWanNengHeiTi-2',
+        font: "YeZiGongChangWanNengHeiTi-2",
         fontSize: this.#defaultFontSize,
         cellPadding: 3,
       },
       startY: this.#startY,
-      pageBreak: 'auto',
+      pageBreak: "auto",
       didDrawPage: (data) => {
         const startPageNumber = data.table.startPageNumber;
         const currentPageNumber = doc.internal.getCurrentPageInfo().pageNumber;
@@ -222,8 +214,7 @@ class PdfExport {
     if (!imgUrl) return;
     const doc = this.#pdfExport;
     // 获取图片宽高
-    const { width: imgWidth, height: imgHeight } =
-      doc.getImageProperties(imgUrl);
+    const { width: imgWidth, height: imgHeight } = doc.getImageProperties(imgUrl);
     // 换算比例
     const widthRatio = this.#contentWidth / imgWidth;
     const heightRatio = this.#contentHeight / imgHeight;
@@ -237,16 +228,7 @@ class PdfExport {
       this.#generatePageNumbers();
       this.#startY = this.#padding;
     }
-    doc.addImage(
-      imgUrl,
-      'JPEG',
-      this.#padding,
-      this.#startY,
-      w,
-      h,
-      '',
-      compression
-    );
+    doc.addImage(imgUrl, "JPEG", this.#padding, this.#startY, w, h, "", compression);
     this.#startY += h + this.#padding;
   }
 
@@ -254,7 +236,7 @@ class PdfExport {
    * 保存PDF
    * @param {string} fileName
    */
-  save(fileName = '附件') {
+  save(fileName = "附件") {
     this.#pdfExport.save(fileName);
   }
 }

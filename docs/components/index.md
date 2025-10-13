@@ -56,6 +56,16 @@ import { withBase } from 'vitepress'
       </n-card>
     </a>
   </n-gi>
+  <n-gi>
+    <a :href="withBase('/components/pdf-export')" style="text-decoration: none; color: inherit;">
+      <n-card hoverable size="small">
+        <n-space vertical size="small">
+          <strong>PdfExport PDF 导出</strong>
+          <span>基于 jsPDF 与 autotable 的 PDF 导出工具。</span>
+        </n-space>
+      </n-card>
+    </a>
+  </n-gi>
 </n-grid>
 
 ## 🎨 UI组件

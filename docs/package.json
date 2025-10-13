@@ -23,6 +23,7 @@
     "@develop-plugins/directive": "^0.0.7",
     "@develop-plugins/excel-preview": "^0.1.5",
     "@develop-plugins/org-chart": "^0.0.2",
+    "@develop-plugins/pdf-export": "^0.0.1",
     "@develop-plugins/pdf-preview": "^0.0.4",
     "@develop-plugins/text-ellipsis": "^0.0.3",
     "@develop-plugins/water-mark": "^0.0.9",

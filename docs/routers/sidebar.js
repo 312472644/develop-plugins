@@ -18,6 +18,7 @@ export default {
       items: [
         { text: 'ExcelPreview Excel预览', link: '/components/excel-preview' },
         { text: 'PdfPreview PDF预览', link: '/components/pdf-preview' },
+        { text: 'PdfExport PDF导出', link: '/components/pdf-export' },
       ],
     },
     {
