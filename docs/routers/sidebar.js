@@ -45,4 +45,19 @@ export default {
       ],
     },
   ],
+  '/plugins/': [
+    {
+      text: '插件总览',
+      items: [
+        { text: '插件介绍', link: '/plugins/' },
+      ],
+    },
+    {
+      text: '构建插件',
+      items: [
+        { text: 'vite-build-git-info Git信息', link: '/plugins/vite-build-git-info' },
+        { text: 'vite-generate-zip 压缩包生成', link: '/plugins/vite-generate-zip' },
+      ],
+    },
+  ],
 };
