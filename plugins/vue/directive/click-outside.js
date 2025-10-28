@@ -1,5 +1,3 @@
-let handleClick = null;
-
 /**
  * v-click-outside 指令允许您提供一个处理函数并且在用户点击目标元素之外时被调用。
  * @param {Object | Function} binding.value
@@ -13,7 +11,7 @@ export default {
     const { value } = binding;
     const { handler, closeConditional, include } = value;
 
-    handleClick = function (e) {
+    el._handleClick = function (e) {
       // 包含的元素
       if (typeof include === "function") {
         const includeDOMList = include();
@@ -36,9 +34,9 @@ export default {
         throw new Error("value must be a function or an object");
       }
     };
-    window.addEventListener("click", handleClick);
+    window.addEventListener("click", el._handleClick);
   },
-  unmounted() {
-    window.removeEventListener("click", handleClick);
+  unmounted(el) {
+    window.removeEventListener("click", el._handleClick);
   },
 };
