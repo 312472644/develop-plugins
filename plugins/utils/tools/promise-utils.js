@@ -36,11 +36,13 @@ export function createCancelPromise(asyncTask) {
 }
 
 /**
- * fetch 请求封装
+ * fetch 请求封装。连续发起多次请求会取消上一次请求，取消之前的请求并发起一个新的
  * @param {(signal) => Promise} fetchTask
  * @returns {() => Promise}
  * @example
- * createCancelableFetch((signal) => fetch('url', { signal }))
+ * const cancelableFetch = createCancelableFetch(fetchTask);
+ * let promise = cancelableFetch('https://api.example.com/data'); // 发起一个请求
+ * promise = cancelableFetch('https://api.example.com/other-data'); // 取消之前的请求并发起一个新的
  */
 export function createCancelableFetch(fetchTask) {
   let controller = null;
