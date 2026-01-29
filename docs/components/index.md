@@ -11,6 +11,7 @@ import { withBase } from 'vitepress'
 </script>
 
 ## 📊 数据展示
+
 <n-grid cols="2" x-gap="16" y-gap="16">
   <n-gi>
     <a :href="withBase('/components/chart')" style="text-decoration: none; color: inherit;">
@@ -35,6 +36,7 @@ import { withBase } from 'vitepress'
 </n-grid>
 
 ## 📄 文档预览
+
 <n-grid cols="2" x-gap="16" y-gap="16">
   <n-gi>
     <a :href="withBase('/components/excel-preview')" style="text-decoration: none; color: inherit;">
@@ -69,6 +71,7 @@ import { withBase } from 'vitepress'
 </n-grid>
 
 ## 🎨 UI组件
+
 <n-grid cols="2" x-gap="16" y-gap="16">
   <n-gi>
     <a :href="withBase('/components/x-message')" style="text-decoration: none; color: inherit;">
@@ -106,6 +109,16 @@ import { withBase } from 'vitepress'
         <n-space vertical size="small">
           <strong>WaterMark 水印</strong>
           <span>为页面或内容区域添加水印效果。</span>
+        </n-space>
+      </n-card>
+    </a>
+  </n-gi>
+   <n-gi>
+    <a :href="withBase('/components/seamless-table')" style="text-decoration: none; color: inherit;">
+      <n-card hoverable size="small">
+        <n-space vertical size="small">
+          <strong>SeamlessTable 无缝表格</strong>
+          <span>支持无缝滚动的表格组件。</span>
         </n-space>
       </n-card>
     </a>

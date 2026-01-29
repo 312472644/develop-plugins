@@ -45,19 +45,19 @@ const messageCode = `<template>
 import XMessage from '@develop-plugins/x-message'
 
 const showSuccess = () => {
-  XMessage.success('操作成功！')
+  XMessage({ message: '操作成功！', type: 'success' })
 }
 
 const showError = () => {
-  XMessage.error('操作失败！')
+  XMessage({ message: '操作失败！', type: 'error' })
 }
 
 const showWarning = () => {
-  XMessage.warning('警告信息！')
+  XMessage({ message: '警告信息！', type: 'warning' })
 }
 
 const showInfo = () => {
-  XMessage.info('提示信息！')
+    XMessage({ message: '提示信息！', type: 'info' })
 }
 <\/script>`
 // BaseTable 列与数据
@@ -163,10 +163,13 @@ const showCustom = () => {
 ### API
 
 #### 方法
+
 <BaseTable :columns="methodsColumns" :data="methodsData" />
 
 #### MessageOptions
+
 <BaseTable :columns="optsColumns" :data="optsData" />
 
 #### 事件
+
 <BaseTable :columns="eventsColumns" :data="eventsData" />
