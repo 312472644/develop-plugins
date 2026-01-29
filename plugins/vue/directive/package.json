@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "vite build --config ../base.config.js"
+    "build": "vite build --config ../base.config.js",
+    "prepublishOnly": "npm run build",
+    "postpublish": "node ../version.js"
   },
   "keywords": [
     "vue",

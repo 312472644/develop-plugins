@@ -1,9 +1,7 @@
-interface IObject {
-  [x in string]: string;
-}
-
 export interface IOrgChart {
-  data: IObject;
+  data: {
+    [x in string]: string;
+  };
   collapsible?: boolean;
   direction?: "vertical" | "horizontal";
   isInit?: boolean;

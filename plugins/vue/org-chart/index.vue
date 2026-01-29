@@ -48,18 +48,14 @@
       >
         <td
           v-for="horizontal in data.children.length * 2"
-          :style="`width:${100 / (data.children.length * 2)}%; visibility: ${
-            show ? 'inherit' : 'hidden'
-          }`"
+          :style="`width:${100 / (data.children.length * 2)}%; visibility: ${show ? 'inherit' : 'hidden'}`"
           :class="{
             'organization-chart-connector-left-radius': horizontal === 2,
             'organization-chart-connector-horizontal':
               horizontal > 1 && horizontal < data.children.length * 2 && horizontal % 2 === 1,
-            'organization-chart-connector-top':
-              horizontal > 1 && horizontal < data.children.length * 2,
+            'organization-chart-connector-top': horizontal > 1 && horizontal < data.children.length * 2,
 
-            'organization-chart-connector-right-radius':
-              horizontal === data.children.length * 2 - 1,
+            'organization-chart-connector-right-radius': horizontal === data.children.length * 2 - 1,
           }"
         ></td>
       </tr>
@@ -69,11 +65,7 @@
         class="organization-chart-node-children"
         data-section="node-children"
       >
-        <td
-          v-for="node in data.children"
-          :colspan="parentColspan / data.children.length"
-          data-section="node-cell"
-        >
+        <td v-for="node in data.children" :colspan="parentColspan / data.children.length" data-section="node-cell">
           <OrgChart
             :data="node"
             v-on:cell-click="handleCellClick"
@@ -138,11 +130,7 @@
           class="organization-chart-node-children"
         >
           <tr v-for="(item, index) in data.children">
-            <td
-              v-if="data?.children?.length > 1"
-              style="position: relative; width: 24px"
-              data-section="connectors"
-            >
+            <td v-if="data?.children?.length > 1" style="position: relative; width: 24px" data-section="connectors">
               <div
                 data-section="connectors-line"
                 :row-index="index"
@@ -155,11 +143,7 @@
               ></div>
             </td>
             <td data-section="cell">
-              <div
-                data-section="cell"
-                class="organization-chart-node"
-                @click="handleCellClick(item)"
-              >
+              <div data-section="cell" class="organization-chart-node" @click="handleCellClick(item)">
                 {{ item.label }}
               </div>
             </td>
@@ -184,9 +168,9 @@
   </table>
 </template>
 <script setup name="OrgChart">
-import { ref, defineProps, useSlots } from 'vue';
+import { ref, defineProps, useSlots } from "vue";
 
-const emits = defineEmits(['cell-click', 'expand']);
+const emits = defineEmits(["cell-click", "expand"]);
 const props = defineProps({
   data: {
     type: Object,
@@ -198,8 +182,8 @@ const props = defineProps({
   },
   direction: {
     type: String,
-    default: 'vertical',
-    validator: value => ['vertical', 'horizontal'].includes(value),
+    default: "vertical",
+    validator: (value) => ["vertical", "horizontal"].includes(value),
   },
   isInit: {
     type: Boolean,
@@ -213,20 +197,19 @@ const parentColspan = children?.length > 0 ? children?.length * 2 : 1;
 
 const hasLabelSlot = slots.label !== undefined;
 
-const handleCellClick = data => {
-  emits('cell-click', data);
+const handleCellClick = (data) => {
+  emits("cell-click", data);
 };
 
-const handleExpand = data => {
-  emits('expand', data);
+const handleExpand = (data) => {
+  emits("expand", data);
 };
 
-const handleToggle = nodeData => {
+const handleToggle = (nodeData) => {
   show.value = !show.value;
-  emits('expand', nodeData);
+  emits("expand", nodeData);
 };
 </script>
-<script></script>
 <style lang="scss" scoped>
 $borderColor: #e2e8f0;
 .organization-chart-table {
@@ -329,7 +312,7 @@ $borderColor: #e2e8f0;
         inset: 0;
         border-left: 1px solid $borderColor;
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           left: 0;
           right: 0;
@@ -349,7 +332,7 @@ $borderColor: #e2e8f0;
     }
     .node-connector-line {
       top: calc(50% - 10px);
-      &[data-visible='true'] {
+      &[data-visible="true"] {
         border-top: 1px solid $borderColor;
       }
       width: 100%;

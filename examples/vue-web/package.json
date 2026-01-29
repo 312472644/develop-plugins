@@ -17,6 +17,7 @@
     "@develop-plugins/text-ellipsis": "workspace:^",
     "@develop-plugins/water-mark": "workspace:^",
     "@develop-plugins/chart": "workspace:^",
+    "@develop-plugins/seamless-table": "workspace:^",
     "@unocss/preset-rem-to-px": "^0.62.4",
     "@vitejs/plugin-vue": "^5.0.4",
     "ant-design-vue": "4.x",

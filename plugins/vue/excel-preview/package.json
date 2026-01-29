@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "prepublishOnly": "npm run build & node ../version.js"
+    "prepublishOnly": "npm run build",
+    "postpublish": "node ../version.js"
   },
   "keywords": [
     "vue3",

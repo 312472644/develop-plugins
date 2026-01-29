@@ -1,38 +1,36 @@
 <template>
-  <div style="padding: 20px">
-    <a-button>按钮</a-button>
-    <div style="width: 100%; height: 400px; border: 1px solid #000; margin-top: 20px">
-      <Chart :option="chartOptions" :loading="loading"></Chart>
-    </div>
+  <div style="padding: 10px; height: 300px">
+    <SeamlessTable
+      :columns="columns"
+      :data="data"
+      :speed="80"
+      @row-click="(row, index) => console.log('点击了行：', row, index)"
+    >
+      <template #name="{ row }">
+        <span style="color: #ffeb3b; font-style: italic">{{ row.name }}</span>
+      </template>
+    </SeamlessTable>
   </div>
 </template>
 <script setup>
-import { ref } from "vue";
-import Chart from "@develop-plugins/chart";
+import { ref, onMounted } from "vue";
+const columns = ref([
+  { key: "name", title: "姓名", align: "center", width: "150px" },
+  { key: "age", title: "年龄", align: "center" },
+  { key: "address", title: "地址", align: "center" },
+]);
 
-const loading = ref(true);
-const chartOptions = {
-  title: {
-    text: "ECharts 入门示例",
-  },
-  tooltip: {},
-  xAxis: {
-    data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
-  },
-  yAxis: {},
-  series: [
-    {
-      name: "销量",
-      type: "bar",
-      data: [5, 20, 36, 10, 10, 20],
-    },
-  ],
-};
+const data = ref([]);
 
-setTimeout(() => {
-  chartOptions.series[0].data = [50, 200, 360, 100, 10, 20];
-  loading.value = false;
-}, 3000);
+onMounted(() => {
+  setTimeout(() => {
+    data.value = Array.from({ length: 30 }).map((_, index) => ({
+      name: `张三-${index + 1}`,
+      age: 20 + (index % 10),
+      address: `北京市朝阳区幸福大街${index + 1}号`,
+    }));
+  }, 3 * 1000);
+});
 </script>
 <style>
 html,

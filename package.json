@@ -1,6 +1,6 @@
 {
   "name": "develop-plugins",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "private": true,
@@ -25,5 +25,8 @@
   "dependencies": {
     "vite-plugin-css-injected-by-js": "^3.5.2",
     "vue": "^3.4.27"
+  },
+  "volta": {
+    "node": "20.19.2"
   }
 }
