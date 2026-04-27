@@ -1,6 +1,12 @@
 <template>
-  <div class="seamless-scroll-table" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
-    <div class="table-header" ref="headerRef">
+  <div
+    class="seamless-scroll-table"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
+    :style="{ height: height }"
+  >
+    <!-- 表头 -->
+    <div class="table-header">
       <table>
         <thead>
           <tr>
@@ -8,10 +14,7 @@
               v-for="(col, index) in columns"
               class="th-cell"
               :key="col.key || index"
-              :style="{
-                width: col.width || 'auto',
-                textAlign: col.align || 'left',
-              }"
+              :style="{ width: col.width || 'auto', textAlign: col.align || 'left' }"
             >
               {{ col.title }}
             </th>
@@ -19,46 +22,45 @@
         </thead>
       </table>
     </div>
-    <div v-if="data.length > 0" class="scroll-content" ref="scrollContentRef">
+
+    <!-- 内容 -->
+    <div v-if="displayData.length" class="scroll-content" ref="scrollContentRef">
       <div
         ref="contentRef"
         class="content-wrapper"
-        :class="{ animate: shouldScroll }"
-        :style="shouldScroll ? { animationDuration: duration + 's' } : {}"
+        :class="{ animate: shouldScroll && !step }"
+        :style="!step && shouldScroll ? { animationDuration: duration + 's' } : {}"
       >
+        <!-- 步进模式：只渲染一份 -->
         <table>
           <tbody>
-            <tr v-for="(row, index) in data" :key="index" @click="$emit('row-click', row, index)">
+            <tr v-for="(row, index) in displayData" :key="index" @click="$emit('row-click', row, index)">
               <td
                 v-for="col in columns"
-                :key="col.key || index"
-                :style="{
-                  width: col.width || 'auto',
-                  textAlign: col.align || 'left',
-                }"
+                class="th-cell"
+                :key="col.key"
+                :style="{ width: col.width || 'auto', textAlign: col.align || 'left' }"
               >
-                <!-- 默认插槽：支持自定义内容 -->
-                <slot :name="col.key" :row="row" :index="index" :column="col">
-                  <span :title="row[col.key]">{{ row[col.key] }}</span>
+                <slot :name="col.key" :row="row" :index="index">
+                  {{ row[col.key] }}
                 </slot>
               </td>
             </tr>
           </tbody>
         </table>
-        <!-- 第二份数据（实现无缝） -->
-        <table v-if="shouldScroll" class="copy-table">
+
+        <!-- 平滑滚动：复制一份 -->
+        <table v-if="shouldScroll && !step">
           <tbody>
             <tr v-for="(row, index) in data" :key="index + data.length" @click="$emit('row-click', row, index)">
               <td
                 v-for="col in columns"
+                class="th-cell"
                 :key="col.key"
-                :style="{
-                  width: col.width || 'auto',
-                  textAlign: col.align || 'left',
-                }"
+                :style="{ width: col.width || 'auto', textAlign: col.align || 'left' }"
               >
-                <slot :name="col.key" :row="row" :index="index" :column="col">
-                  <span :title="row[col.key]">{{ row[col.key] }}</span>
+                <slot :name="col.key" :row="row" :index="index">
+                  {{ row[col.key] }}
                 </slot>
               </td>
             </tr>
@@ -67,149 +69,146 @@
       </div>
     </div>
     <div v-else class="empty-container">
-      <div v-if="!$slots.empty" class="empty">
-        <span class="empty-text">暂无数据</span>
-      </div>
-
+      <div v-if="!$slots.empty" class="empty"><span class="empty-text">暂无数据</span></div>
       <slot v-else name="empty"></slot>
     </div>
   </div>
 </template>
 
-<script setup name="SeamlessTable">
-import { ref, onMounted, nextTick, computed, shallowRef, onUnmounted, watch } from "vue";
+<script setup>
+import { ref, computed, onMounted, nextTick, onUnmounted, watch } from "vue";
 
-defineEmits(["row-click"]);
+defineOptions({ name: "SeamlessTable" });
 
 const props = defineProps({
-  data: {
-    type: Array,
-    required: true,
-  },
-  // 奇数行背景色
-  oddBackground: {
-    type: String,
-    default: "#021736",
-  },
-  // 偶数行背景色
-  evenBackground: {
-    type: String,
-    default: "#042d4c",
-  },
-  // 悬停行背景色
+  data: { type: Array, default: () => [] },
+  columns: { type: Array, default: () => [] },
+  speed: { type: Number, default: 60 },
+  oddBackground: { type: String, default: "#021736" },
+  evenBackground: { type: String, default: "#042d4c" },
   hoverBackground: {
     type: String,
     default: "#0a526e",
   },
-  /**
-   * 列配置
-   * - key: 列字段名（对应 data 中的字段）
-   * - title: 列标题
-   * - align: 对齐方式（left/center/right）
-   * - width: 列宽（可选，支持 px/% 等单位）
-   */
-  columns: {
-    type: Array,
-    required: true,
-    validator: (cols) => cols.every((col) => col.key && col.title),
-  },
-  // 容器高度（px）
   height: {
     type: [Number, String],
     default: "100%",
   },
-  // 滚动速度（px/秒）
-  speed: {
-    type: Number,
-    default: 60,
-  },
+  // ✅ 步进配置
+  step: { type: Boolean, default: false },
+  stepDelay: { type: Number, default: 1000 },
 });
 
-const resizeObserver = shallowRef(null);
+defineEmits(["row-click"]);
+
 const contentRef = ref(null);
 const scrollContentRef = ref(null);
+
+// ✅ 真正渲染的数据（可变）
+const displayData = ref([]);
 
 const contentHeight = ref(0);
 const containerHeight = ref(0);
 
+let timer = null;
+let rowHeight = 0;
+
+// 是否需要滚动
 const shouldScroll = computed(() => {
-  return props.data.length > 0 && contentHeight.value > 0 && contentHeight.value > containerHeight.value;
+  return contentHeight.value > containerHeight.value;
 });
 
+// 平滑滚动时长
 const duration = computed(() => {
   if (!shouldScroll.value) return 0;
   return (contentHeight.value * 2) / props.speed;
 });
 
-// 测量内容高度（表格实际高度）
-const measureContentHeight = async () => {
-  await nextTick();
-  const tableEl = contentRef.value?.querySelector("table");
-  if (tableEl) {
-    contentHeight.value = tableEl.offsetHeight;
-  }
+// 初始化数据
+const initData = () => {
+  displayData.value = [...props.data];
 };
 
-// 测量容器高度（可视区域）
-const measureContainerHeight = async () => {
+// 测量
+const measure = async () => {
   await nextTick();
-  if (scrollContentRef.value) {
-    containerHeight.value = scrollContentRef.value.clientHeight;
+
+  const table = contentRef.value?.querySelector("table");
+  const tr = contentRef.value?.querySelector("tr");
+
+  if (table) contentHeight.value = table.offsetHeight;
+  if (scrollContentRef.value) containerHeight.value = scrollContentRef.value.clientHeight;
+
+  if (tr) rowHeight = tr.offsetHeight;
+};
+
+const startStepScroll = () => {
+  if (!props.step || !shouldScroll.value) return;
+
+  stopStepScroll();
+
+  timer = setInterval(() => {
+    if (!contentRef.value || displayData.value.length === 0) return;
+
+    // 1️⃣ 向上滚动一行
+    contentRef.value.style.transition = "transform 0.3s ease";
+    contentRef.value.style.transform = `translateY(-${rowHeight}px)`;
+
+    // 2️⃣ 动画结束后重排
+    setTimeout(() => {
+      const first = displayData.value.shift();
+      displayData.value.push(first);
+
+      contentRef.value.style.transition = "none";
+      contentRef.value.style.transform = `translateY(0)`;
+    }, 300);
+  }, props.stepDelay);
+};
+
+const stopStepScroll = () => {
+  if (timer) {
+    clearInterval(timer);
+    timer = null;
   }
 };
 
 const handleMouseEnter = () => {
-  if (shouldScroll.value && contentRef.value) {
-    contentRef.value.style.animationPlayState = "paused";
-  }
+  if (props.step) stopStepScroll();
+  else contentRef.value.style.animationPlayState = "paused";
 };
 
 const handleMouseLeave = () => {
-  if (shouldScroll.value && contentRef.value) {
-    contentRef.value.style.animationPlayState = "running";
-  }
+  if (props.step) startStepScroll();
+  else contentRef.value.style.animationPlayState = "running";
 };
 
-onMounted(() => {
-  measureContentHeight();
-  measureContainerHeight();
+onMounted(async () => {
+  initData();
+  await measure();
 
-  resizeObserver.value = new ResizeObserver(() => {
-    measureContainerHeight();
-    measureContentHeight();
-  });
-
-  if (scrollContentRef.value) {
-    resizeObserver.value.observe(scrollContentRef.value);
-  }
+  if (props.step) startStepScroll();
 });
 
 onUnmounted(() => {
-  if (resizeObserver.value) {
-    resizeObserver.value.disconnect();
-  }
+  stopStepScroll();
 });
-
-watch(() => props.data, measureContentHeight, { deep: true });
-
 watch(
-  () => props.speed,
-  () => {
-    // 速度变化时重新计算动画时长
-    if (shouldScroll.value) {
-      duration.value = (contentHeight.value * 2) / props.speed;
-    }
-  }
+  () => props.data,
+  async () => {
+    initData();
+    await measure();
+
+    if (props.step) startStepScroll();
+  },
+  { deep: true }
 );
 
 watch(
-  () => props.data,
-  () => {
-    // 数据变化时重新计算内容高度
-    measureContentHeight();
-    measureContainerHeight();
-  },
-  { deep: true }
+  () => props.step,
+  (val) => {
+    if (val) startStepScroll();
+    else stopStepScroll();
+  }
 );
 </script>
 
@@ -234,14 +233,12 @@ watch(
       white-space: normal;
     }
   }
-
   .table-header table,
   .content-wrapper table {
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
   }
-
   .table-header th {
     padding: 10px;
     font-weight: normal;
@@ -249,15 +246,12 @@ watch(
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-
-  /* 滚动内容区 */
+  } /* 滚动内容区 */
   .scroll-content {
     height: 100%;
     overflow: hidden;
     flex: 1 0 0;
     min-height: 0;
-
     tr {
       background-color: v-bind(evenBackground);
       &:nth-last-of-type(odd) {
@@ -268,7 +262,6 @@ watch(
         background-color: v-bind(hoverBackground);
       }
     }
-
     .copy-table {
       tr {
         background-color: v-bind(oddBackground);
@@ -277,42 +270,34 @@ watch(
         }
       }
     }
-
     td {
       font-size: 13px;
-    }
-
-    /* 滚动内容 */
+    } /* 滚动内容 */
     .content-wrapper {
       will-change: transform;
       display: flex;
       flex-direction: column;
     }
-
     .content-wrapper.animate {
       animation: scrollUp linear infinite;
       animation-play-state: running;
-    }
-
-    /* 单元格样式 */
+    } /* 单元格样式 */
     .content-wrapper td {
       padding: 10px;
       color: #fff;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-    }
-
-    /* 悬停暂停 */
+    } /* 悬停暂停 */
     .seamless-scroll-table:hover .content-wrapper.animate {
       animation-play-state: paused;
     }
   }
-
   .empty-container {
     flex: 1 0 0;
     .empty {
       height: 100%;
+      min-height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -323,7 +308,6 @@ watch(
       }
     }
   }
-
   @keyframes scrollUp {
     0% {
       transform: translate3d(0, 0, 0);

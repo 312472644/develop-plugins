@@ -173,6 +173,9 @@ const handleRowClick = (row, index) => {
 | oddBackground   | 奇数行背景色                                       | `String`           | -      | `#021736` |
 | evenBackground  | 偶数行背景色                                       | `String`           | -      | `#042d4c` |
 | hoverBackground | 行悬停时的背景色                                   | `String`           | -      | `#0a526e` |
+| step            | 是否开启步进滚动动画，可选值：true、false，默认 true | `Boolean`          | -      | `false`     |
+| stepDelay       | 步进滚动动画延迟时间，单位为毫秒，默认 1000 | `Number`           | -      | `1000`     |
+
 
 **columns 字段说明：**
 
