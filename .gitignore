@@ -11,3 +11,4 @@ dist
 docs/.vitepress/cache/
 
 .npmrc
+**/.npmrc
