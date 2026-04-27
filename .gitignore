@@ -9,3 +9,5 @@ dist
 /plugins/**/package-lock.json
 
 docs/.vitepress/cache/
+
+.npmrc
