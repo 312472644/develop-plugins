@@ -39,9 +39,12 @@ const propsData = [
   { prop: 'columns', desc: '列配置数组，每项包含 key、title、align、width 字段', type: 'Array', default: '-' },
   { prop: 'height', desc: '容器高度，Number 或 String，支持 px 或 %', type: 'Number | String', default: "'100%'" },
   { prop: 'speed', desc: '滚动速度，单位为像素/秒', type: 'Number', default: '60' },
+  { prop: 'headerBackground', desc: '表头背景色', type: 'String', default: '#021736' },
   { prop: 'oddBackground', desc: '奇数行背景色', type: 'String', default: '#021736' },
   { prop: 'evenBackground', desc: '偶数行背景色', type: 'String', default: '#042d4c' },
   { prop: 'hoverBackground', desc: '行悬停时的背景色', type: 'String', default: '#0a526e' },
+  { prop: 'step', desc: '是否开启步进式滚动行', type: 'Boolean', default: 'false' },
+  { prop: 'stepDelay', desc: '步进式滚动行的延迟时间，单位为毫秒', type: 'Number', default: 1000 },
 ]
 
 // 插槽表
@@ -127,6 +130,29 @@ const slotCode = `<template>
   ]);
 <\/script>`
 
+const stepCode = `<template>
+  <SeamlessTable :columns="columns" :data="tableData" :scrollSpeed="50" style="height: 300px" step>
+    <template #cell-age="{ row }">
+      <span :style="{ color: row.age > 30 ? 'red' : 'green' }">{{ row.age }}</span>
+    </template>
+  </SeamlessTable>
+</template>
+<script setup>
+  import SeamlessTable from '@develop-plugins/seamless-table'
+  import { ref } from 'vue'
+
+  const columns = ref([
+    { key: "name", title: "姓名", align: "center", width: "150px" },
+    { key: "age", title: "年龄", align: "center", width: "100px" },
+    { key: "address", title: "地址", align: "left" },
+  ]);
+  const tableData = ref([
+    { name: "张三", age: 28, address: "北京市朝阳区" },
+    { name: "李四", age: 35, address: "上海市浦东新区" },
+    { name: "王五", age: 42, address: "深圳市南山区" },
+  ]);
+<\/script>`;
+
 function handleRowClick(row, index) {
   XMessage({ message: `点击了 ${row.name} 的行，索引：${index}`, type: 'success' })
 }
@@ -147,6 +173,14 @@ function handleRowClick(row, index) {
         <span :style="{ color: row.age > 30 ? 'red' : 'green' }">{{ row.age }}</span>
       </template>
     </SeamlessTable>
+  </template>
+</CodeCard>
+
+### 步进式滚动行
+
+<CodeCard :code="stepCode">
+  <template #demo>
+    <SeamlessTable :columns="columns" :data="tableData" :scrollSpeed="50" style="height: 300px" step />
   </template>
 </CodeCard>
 

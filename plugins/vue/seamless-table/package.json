@@ -1,6 +1,6 @@
 {
   "name": "@develop-plugins/seamless-table",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "无缝循环滚动表格组件，适用于大屏数据展示场景。当表格内容高度超过容器时自动启动循环滚动动画。",
   "main": "dist/index.js",
   "type": "module",

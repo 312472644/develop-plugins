@@ -45,38 +45,38 @@ importers:
   docs:
     dependencies:
       '@develop-plugins/chart':
-        specifier: ^0.0.2
-        version: 0.0.2(vue@3.5.22(typescript@4.1.2))
+        specifier: workspace:*
+        version: link:../plugins/vue/chart
       '@develop-plugins/directive':
-        specifier: ^0.0.7
-        version: 0.0.7(vue@3.5.22(typescript@4.1.2))
+        specifier: workspace:*
+        version: link:../plugins/vue/directive
       '@develop-plugins/excel-preview':
-        specifier: ^0.1.5
-        version: 0.1.5(handsontable@16.1.1)(vue@3.5.22(typescript@4.1.2))
+        specifier: workspace:*
+        version: link:../plugins/vue/excel-preview
       '@develop-plugins/org-chart':
-        specifier: ^0.0.2
-        version: 0.0.2(vue@3.5.22(typescript@4.1.2))
+        specifier: workspace:*
+        version: link:../plugins/vue/org-chart
       '@develop-plugins/pdf-export':
-        specifier: ^0.0.1
-        version: 0.0.1
+        specifier: workspace:*
+        version: link:../plugins/utils/pdf-export
       '@develop-plugins/pdf-preview':
-        specifier: ^0.0.4
-        version: 0.0.4(vue@3.5.22(typescript@4.1.2))
+        specifier: workspace:*
+        version: link:../plugins/vue/pdf-preview
       '@develop-plugins/seamless-table':
-        specifier: ^0.0.2
-        version: 0.0.2(vue@3.5.22(typescript@4.1.2))
+        specifier: workspace:*
+        version: link:../plugins/vue/seamless-table
       '@develop-plugins/text-ellipsis':
-        specifier: ^0.0.3
-        version: 0.0.3(vue@3.5.22(typescript@4.1.2))
+        specifier: workspace:*
+        version: link:../plugins/vue/text-ellipsis
       '@develop-plugins/water-mark':
-        specifier: ^0.0.9
-        version: 0.0.9(vue@3.5.22(typescript@4.1.2))
+        specifier: workspace:*
+        version: link:../plugins/vue/water-mark
       '@develop-plugins/x-message':
-        specifier: ^0.0.3
-        version: 0.0.3(vue@3.5.22(typescript@4.1.2))
+        specifier: workspace:*
+        version: link:../plugins/vue/x-message
       '@develop-plugins/x-scroll':
-        specifier: ^0.0.6
-        version: 0.0.6(vue@3.5.22(typescript@4.1.2))
+        specifier: workspace:*
+        version: link:../plugins/vue/x-scroll
     devDependencies:
       '@vicons/ionicons5':
         specifier: ^0.12.0
@@ -496,72 +496,8 @@ packages:
     resolution: {integrity: sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA==}
     engines: {node: '>=10'}
 
-  '@develop-plugins/chart@0.0.2':
-    resolution: {integrity: sha512-O/+4P0V8mhboRNYUIr2SxoGc0PMgR40mXLTplUBsnMVmdstxd511oMtZLCOIh8/JL+kz+V7nAEWOe8nJzvVkxg==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      vue: ^3.0.0
-
-  '@develop-plugins/directive@0.0.7':
-    resolution: {integrity: sha512-3PYT3YhFW5vAo+zW4uMPfBv4Dpvk7MxoiLUbRyVgesYZ0zOKwb+lr/uenazT4nITNx48sb3+LGZ/f5L/ntHW4w==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      vue: ^3.0.0
-
-  '@develop-plugins/excel-preview@0.1.5':
-    resolution: {integrity: sha512-HPMFatg9PV9e36uUMqwzzqsnvJlg2B3lsu0/RV3JXz30TCTT0HCIG8bfh94YtwIKBicc2lNRZU7AnNa3hVPBwg==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      vue: ^3.0.0
-
-  '@develop-plugins/org-chart@0.0.2':
-    resolution: {integrity: sha512-Nj6Q+LegRrSGcrnzcjZJgy0/xIUnyqVlZe66J4pG7jc8T9R+ZhWUAnpbm5KvszkwPpVpxrRkAL5TprVfgF/Wyg==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      vue: ^3.0.0
-
-  '@develop-plugins/pdf-export@0.0.1':
-    resolution: {integrity: sha512-qE0y6MH84KM15yo/sNaZOwatoRsBi+nj9UOpg282UHcXgOMFMeX6Fqr3+M3gyXYXeY/6GONI+VyXM1p33gnr2A==}
-    engines: {node: '>=18'}
-
-  '@develop-plugins/pdf-preview@0.0.4':
-    resolution: {integrity: sha512-k17NgpRzIUiGBA3ARXFstGxVWfWOjfhHhmEFZSy8+2TfoZytywSPBA221qNDdDUtId/7ER5qQoz706bnqVp90g==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      vue: ^3.0.0
-
-  '@develop-plugins/seamless-table@0.0.2':
-    resolution: {integrity: sha512-FQVun1OCd0lbHv84t+bqTmvXnvwNzdeItcrK6SvSpu+dWnsVR3r3x1g9Ni3Mc0FFF+n/8KBO5xszOdu29g6H7Q==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      vue: ^3.0.0
-
-  '@develop-plugins/text-ellipsis@0.0.3':
-    resolution: {integrity: sha512-k0rW6t6AUHKEb1We48sxF3+mK0KOmowdlWD8FtMsagc8FjqdLSpzknW9RpMmEyv6V0ng5IaY2egE/9f6KSuF2w==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      vue: ^3.0.0
-
-  '@develop-plugins/water-mark@0.0.9':
-    resolution: {integrity: sha512-eYjXVUbI3IgjYXvH1720AZsur8Pf8W46fbifvZBqnNwdAl7znne2qgNUMy/KLeVHjBlx4L2aZrpTIyJlwx5n+A==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      vue: ^3.0.0
-
   '@develop-plugins/x-message@0.0.2':
     resolution: {integrity: sha512-G0kAZKHGDP8LwIZ/jBKQnJW0Q9ANL3Z7qKddOC/N8fa3dXz9sffsugg5KnJrn68Nrelb9Bhg0EdeIODedpKJ9w==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      vue: ^3.0.0
-
-  '@develop-plugins/x-message@0.0.3':
-    resolution: {integrity: sha512-l+aiRnbvrGqv9TDEfIgTR+ahAx6YlSoBuZz/tbZ3LTfbOEDpm5IxuKJLHzKlIW/7a0pUGJLZgUridS6/WE93jA==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      vue: ^3.0.0
-
-  '@develop-plugins/x-scroll@0.0.6':
-    resolution: {integrity: sha512-itx96w3G9GtNHxeGN06xlNbH+oPKAB/VLescfUNd4FGZsYaAnhfOFr1ovBjg3pYqZpvm+R4GtdCHZrYpv8GP7Q==}
     engines: {node: '>=18'}
     peerDependencies:
       vue: ^3.0.0
@@ -3747,65 +3683,9 @@ snapshots:
 
   '@ctrl/tinycolor@3.6.1': {}
 
-  '@develop-plugins/chart@0.0.2(vue@3.5.22(typescript@4.1.2))':
-    dependencies:
-      echarts: 5.6.0
-      vue: 3.5.22(typescript@4.1.2)
-
-  '@develop-plugins/directive@0.0.7(vue@3.5.22(typescript@4.1.2))':
-    dependencies:
-      vue: 3.5.22(typescript@4.1.2)
-
-  '@develop-plugins/excel-preview@0.1.5(handsontable@16.1.1)(vue@3.5.22(typescript@4.1.2))':
-    dependencies:
-      '@develop-plugins/x-message': 0.0.2(vue@3.5.22(typescript@4.1.2))
-      '@handsontable/vue3': 15.3.0(handsontable@16.1.1)(vue@3.5.22(typescript@4.1.2))
-      exceljs: 4.4.0
-      vue: 3.5.22(typescript@4.1.2)
-    transitivePeerDependencies:
-      - handsontable
-
-  '@develop-plugins/org-chart@0.0.2(vue@3.5.22(typescript@4.1.2))':
-    dependencies:
-      vue: 3.5.22(typescript@4.1.2)
-
-  '@develop-plugins/pdf-export@0.0.1':
-    dependencies:
-      jspdf: 2.5.2
-      jspdf-autotable: 3.8.4(jspdf@2.5.2)
-
-  '@develop-plugins/pdf-preview@0.0.4(vue@3.5.22(typescript@4.1.2))':
-    dependencies:
-      pdfjs-dist: 5.1.91
-      vue: 3.5.22(typescript@4.1.2)
-
-  '@develop-plugins/seamless-table@0.0.2(vue@3.5.22(typescript@4.1.2))':
-    dependencies:
-      vue: 3.5.22(typescript@4.1.2)
-
-  '@develop-plugins/text-ellipsis@0.0.3(vue@3.5.22(typescript@4.1.2))':
-    dependencies:
-      vue: 3.5.22(typescript@4.1.2)
-
-  '@develop-plugins/water-mark@0.0.9(vue@3.5.22(typescript@4.1.2))':
-    dependencies:
-      vue: 3.5.22(typescript@4.1.2)
-
   '@develop-plugins/x-message@0.0.2(vue@3.4.27(typescript@4.1.2))':
     dependencies:
       vue: 3.4.27(typescript@4.1.2)
-
-  '@develop-plugins/x-message@0.0.2(vue@3.5.22(typescript@4.1.2))':
-    dependencies:
-      vue: 3.5.22(typescript@4.1.2)
-
-  '@develop-plugins/x-message@0.0.3(vue@3.5.22(typescript@4.1.2))':
-    dependencies:
-      vue: 3.5.22(typescript@4.1.2)
-
-  '@develop-plugins/x-scroll@0.0.6(vue@3.5.22(typescript@4.1.2))':
-    dependencies:
-      vue: 3.5.22(typescript@4.1.2)
 
   '@docsearch/css@3.8.2': {}
 
@@ -4072,11 +3952,6 @@ snapshots:
     dependencies:
       handsontable: 16.1.1
       vue: 3.4.27(typescript@4.1.2)
-
-  '@handsontable/vue3@15.3.0(handsontable@16.1.1)(vue@3.5.22(typescript@4.1.2))':
-    dependencies:
-      handsontable: 16.1.1
-      vue: 3.5.22(typescript@4.1.2)
 
   '@hutson/parse-repository-url@5.0.0': {}
 

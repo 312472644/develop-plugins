@@ -1,4 +1,4 @@
-import { defineConfig } from "vitepress";
+import { defineConfig, serve } from "vitepress";
 import baseConfig from "./base-config.mjs";
 import { sidebar, socialLinks, nav } from "../routers";
 

@@ -296,6 +296,15 @@ watch(
       animation-play-state: paused;
     }
   }
+  table tbody tr {
+    &:hover {
+      .th-cell {
+        transition: all 0.3s ease;
+        cursor: pointer;
+        background: v-bind(hoverBackground) !important;
+      }
+    }
+  }
   .empty-container {
     flex: 1 0 0;
     .empty {
