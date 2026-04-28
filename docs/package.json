@@ -20,16 +20,16 @@
     "vitepress": "^1.1.0"
   },
   "dependencies": {
-    "@develop-plugins/chart": "workspace:*",
-    "@develop-plugins/directive": "workspace:*",
-    "@develop-plugins/excel-preview": "workspace:*",
-    "@develop-plugins/org-chart": "workspace:*",
-    "@develop-plugins/pdf-export": "workspace:*",
-    "@develop-plugins/pdf-preview": "workspace:*",
-    "@develop-plugins/seamless-table": "workspace:*",
-    "@develop-plugins/text-ellipsis": "workspace:*",
-    "@develop-plugins/water-mark": "workspace:*",
-    "@develop-plugins/x-message": "workspace:*",
-    "@develop-plugins/x-scroll": "workspace:*"
+    "@develop-plugins/chart": "^0.0.2",
+    "@develop-plugins/directive": "^0.0.7",
+    "@develop-plugins/excel-preview": "^0.1.5",
+    "@develop-plugins/org-chart": "^0.0.2",
+    "@develop-plugins/pdf-export": "^0.0.1",
+    "@develop-plugins/pdf-preview": "^0.0.4",
+    "@develop-plugins/seamless-table": "1.0.2",
+    "@develop-plugins/text-ellipsis": "^0.0.3",
+    "@develop-plugins/water-mark": "^0.0.9",
+    "@develop-plugins/x-message": "^0.0.3",
+    "@develop-plugins/x-scroll": "^0.0.6"
   }
 }
