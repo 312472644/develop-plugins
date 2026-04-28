@@ -14,7 +14,10 @@
               v-for="(col, index) in columns"
               class="th-cell"
               :key="col.key || index"
-              :style="{ width: col.width || 'auto', textAlign: col.align || 'left' }"
+              :style="{
+                width: col.width || 'auto',
+                textAlign: col.align || 'left',
+              }"
             >
               {{ col.title }}
             </th>
@@ -39,7 +42,11 @@
                 v-for="col in columns"
                 class="th-cell"
                 :key="col.key"
-                :style="{ width: col.width || 'auto', textAlign: col.align || 'left' }"
+                :style="{
+                  width: col.width || 'auto',
+                  textAlign: col.align || 'left',
+                  backgroundColor: row.backgroundColor,
+                }"
               >
                 <slot :name="col.key" :row="row" :index="index">
                   {{ row[col.key] }}
@@ -52,12 +59,16 @@
         <!-- 平滑滚动：复制一份 -->
         <table v-if="shouldScroll && !step">
           <tbody>
-            <tr v-for="(row, index) in data" :key="index + data.length" @click="$emit('row-click', row, index)">
+            <tr v-for="(row, index) in displayData" :key="index + data.length" @click="$emit('row-click', row, index)">
               <td
                 v-for="col in columns"
                 class="th-cell"
                 :key="col.key"
-                :style="{ width: col.width || 'auto', textAlign: col.align || 'left' }"
+                :style="{
+                  width: col.width || 'auto',
+                  textAlign: col.align || 'left',
+                  backgroundColor: row.backgroundColor,
+                }"
               >
                 <slot :name="col.key" :row="row" :index="index">
                   {{ row[col.key] }}
@@ -84,7 +95,11 @@ const props = defineProps({
   data: { type: Array, default: () => [] },
   columns: { type: Array, default: () => [] },
   speed: { type: Number, default: 60 },
+  // 表头背景颜色
+  headerBackground: { type: String, default: "#021736" },
+  // 奇数行背景颜色
   oddBackground: { type: String, default: "#021736" },
+  // 偶数行背景颜色
   evenBackground: { type: String, default: "#042d4c" },
   hoverBackground: {
     type: String,
@@ -126,7 +141,12 @@ const duration = computed(() => {
 
 // 初始化数据
 const initData = () => {
-  displayData.value = [...props.data];
+  displayData.value = [...props.data].map((row, index) => {
+    return {
+      ...row,
+      backgroundColor: index % 2 === 0 ? props.oddBackground : props.evenBackground,
+    };
+  });
 };
 
 // 测量
@@ -221,14 +241,14 @@ watch(
   display: flex;
   flex-direction: column;
   .table-header {
-    background: #021633;
+    background: v-bind(headerBackground);
     .th-cell {
       color: #14c3f0;
       box-sizing: border-box;
       line-height: 40px;
       overflow: hidden;
       overflow-wrap: break-word;
-      padding: 4px 0;
+      padding: 4px 10px;
       text-overflow: ellipsis;
       white-space: normal;
     }
@@ -246,30 +266,13 @@ watch(
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  } /* 滚动内容区 */
+  }
+  /* 滚动内容区 */
   .scroll-content {
     height: 100%;
     overflow: hidden;
     flex: 1 0 0;
     min-height: 0;
-    tr {
-      background-color: v-bind(evenBackground);
-      &:nth-last-of-type(odd) {
-        background-color: v-bind(oddBackground);
-      }
-      &:hover {
-        cursor: pointer;
-        background-color: v-bind(hoverBackground);
-      }
-    }
-    .copy-table {
-      tr {
-        background-color: v-bind(oddBackground);
-        &:nth-last-of-type(even) {
-          background-color: v-bind(evenBackground);
-        }
-      }
-    }
     td {
       font-size: 13px;
     } /* 滚动内容 */

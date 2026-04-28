@@ -1,8 +1,11 @@
 <template>
-  <div style="padding: 10px;">
+  <div style="padding: 10px">
     <SeamlessTable
       :columns="columns"
       :data="data"
+      header-background="gray"
+      odd-background="red"
+      even-background="blue"
       :step="true"
       height="300px"
       :step-delay="3000"
@@ -17,22 +20,24 @@
 </template>
 <script setup>
 import { ref, onMounted } from "vue";
+// import SeamlessTable from "./scroll-table.vue";
+
 const columns = ref([
   { key: "name", title: "姓名", align: "center", width: "150px" },
   { key: "age", title: "年龄", align: "center" },
-  { key: "address", title: "地址", align: "center" },
+  { key: "address", title: "地址", align: "left" },
 ]);
 
 const data = ref([]);
 
 onMounted(() => {
   setTimeout(() => {
-    data.value = Array.from({ length: 1 }).map((_, index) => ({
+    data.value = Array.from({ length: 20 }).map((_, index) => ({
       name: `张三-${index + 1}`,
       age: 20 + (index % 10),
       address: `北京市朝阳区幸福大街${index + 1}号`,
     }));
-  }, 3 * 1000);
+  }, 1000);
 });
 </script>
 <style>

@@ -56,6 +56,28 @@
   pnpm run xxx
   ```
 
+  当前根目录 `package.json` 中已定义的脚本如下：
+
+  | 脚本命令 | 作用说明 |
+  | --- | --- |
+  | `pnpm run dev:vue` | 启动 `@develop-plugins/vue-web` 示例项目的开发服务。 |
+  | `pnpm run changeset:initial` | 初始化 Changesets，并立即进入一次变更集创建流程。 |
+  | `pnpm run changeset` | 创建或编辑 Changeset 变更记录，用于后续版本发布。 |
+  | `pnpm run version` | 根据已有 Changesets 统一更新相关包版本与变更文件。 |
+  | `pnpm run release` | 根据 Changesets 配置发布包到 npm。 |
+  | `pnpm run changelog:all` | 基于提交记录生成根目录的 `CHANGELOG.md`。 |
+  | `pnpm run changelog:seamless-table` | 仅针对 `plugins/vue/seamless-table` 模块生成对应的变更日志。 |
+  | `pnpm run build:docs` | 构建 `@develop-plugins/docs` 文档站点。 |
+  | `pnpm run build:build-plugins` | 构建 `@develop-plugins/build` 插件构建模块。 |
+  | `pnpm run build:vite-build-git-info` | 先构建公共构建模块，再构建 `@develop-plugins/vite-build-git-info`。 |
+  | `pnpm run build:vite-generate-zip` | 先构建公共构建模块，再构建 `@develop-plugins/vite-generate-zip`。 |
+  
+  npm发布时执行命令顺序如下：
+  
+  - `pnpm run changeset`。创建或编辑 Changeset 变更记录，用于后续版本发布。
+  - `pnpm run version`。根据已有 Changesets 统一更新相关包版本与变更文件。
+  - `pnpm run release`。根据 Changesets 配置发布包到 npm。
+
 ### 子包管理操作
 
 在 `workspace` 模式下，`pnpm` 主要通过 `--filter` 选项过滤子模块，实现对各个工作空间进行精细化操作的目的。
@@ -111,6 +133,4 @@
      # 发布所有包名为 @a/ 开头的包
      pnpm --filter @a/* publish
      ```
-
-   
 
