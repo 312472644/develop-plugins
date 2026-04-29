@@ -6,7 +6,7 @@ on:
   # 在针对 `main` 分支的推送上运行。如果你
   # 使用 `master` 分支作为默认分支，请将其更改为 `master`
   push:
-    branches: [ main ]
+    branches: [main]
 
   # 允许你从 Actions 选项卡手动运行此工作流程
   workflow_dispatch:
@@ -28,31 +28,32 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
-    - uses: pnpm/action-setup@v3 # 如果使用 pnpm，请取消此区域注释
-      with:
-        version: 9
-    # - uses: oven-sh/setup-bun@v1 # 如果使用 Bun，请取消注释
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: 22
-        cache: pnpm # 或 pnpm / yarn
-    - name: Setup Pages
-      uses: actions/configure-pages@v4
-    - name: Install Root Dependencies # 安装根依赖项
-      run: pnpm i
-    - name: Install dependencies
-      run: pnpm -filter @develop-plugins/docs i # 或 pnpm install / yarn install / bun install
-    - name: Build with VitePress
-      run: pnpm -filter @develop-plugins/docs run docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: docs/.vitepress/dist
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
+      - uses: pnpm/action-setup@v3 # 如果使用 pnpm，请取消此区域注释
+        with:
+          version: 9
+      # - uses: oven-sh/setup-bun@v1 # 如果使用 Bun，请取消注释
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: 安装根依赖项 # 安装根依赖项
+        run: pnpm i
+      #- name: Install dependencies
+      #  run: pnpm -filter @develop-plugins/docs i # 或 pnpm install / yarn install / bun install
+      - name: 构建文档依赖项
+        run: pnpm -filter @develop-plugins/docs run docs:build-deps
+      - name: 构建文档
+        run: pnpm -filter @develop-plugins/docs run docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
+      - name: 上传文档
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/.vitepress/dist
 
   # 部署工作
   deploy:
@@ -63,6 +64,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy
     steps:
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -7,7 +7,7 @@
   "scripts": {
     "docs:dev": "vitepress dev --port 8081",
     "docs:build-deps": "node ./build-doc-deps.js",
-    "docs:build": "pnpm run docs:build-deps & vitepress build --mode production",
+    "docs:build": "vitepress build --mode production",
     "docs:preview": "vitepress preview"
   },
   "keywords": [],
