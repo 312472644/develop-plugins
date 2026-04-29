@@ -22,8 +22,8 @@ import ExcelPreview from "@develop-plugins/excel-preview";
 
 <script setup>
 import { ref } from 'vue'
-// import ExcelPreview from "@develop-plugins/excel-preview";
-// import '@develop-plugins/excel-preview/style.css'
+import ExcelPreview from "@develop-plugins/excel-preview";
+import '@develop-plugins/excel-preview/style.css'
 
 const excelData = ref();
 

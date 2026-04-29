@@ -16,7 +16,7 @@ function executeBuild() {
   const deps = getDeps();
   for (const depName of deps) {
     const buildCmd = `pnpm --filter ${depName} run build`;
-    console.log("🚀 ~ executeBuild ~ buildCmd:", buildCmd);
+    console.log(`🚀 当前构建命令: 【${buildCmd}】`);
     execSync(buildCmd, { stdio: "inherit" });
   }
 }
