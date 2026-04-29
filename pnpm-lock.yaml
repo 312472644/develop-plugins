@@ -45,37 +45,34 @@ importers:
   docs:
     dependencies:
       '@develop-plugins/chart':
-        specifier: ^0.0.2
+        specifier: workspace:*
         version: link:../plugins/vue/chart
       '@develop-plugins/directive':
-        specifier: ^0.0.7
+        specifier: workspace:*
         version: link:../plugins/vue/directive
       '@develop-plugins/excel-preview':
-        specifier: ^0.1.5
+        specifier: workspace:*
         version: link:../plugins/vue/excel-preview
       '@develop-plugins/org-chart':
-        specifier: ^0.0.2
+        specifier: workspace:*
         version: link:../plugins/vue/org-chart
-      '@develop-plugins/pdf-export':
-        specifier: ^0.0.1
-        version: link:../plugins/utils/pdf-export
       '@develop-plugins/pdf-preview':
-        specifier: ^0.0.4
+        specifier: workspace:*
         version: link:../plugins/vue/pdf-preview
       '@develop-plugins/seamless-table':
-        specifier: 1.0.2
+        specifier: workspace:*
         version: link:../plugins/vue/seamless-table
       '@develop-plugins/text-ellipsis':
-        specifier: ^0.0.3
-        version: 0.0.3(vue@3.5.22(typescript@4.1.2))
+        specifier: workspace:*
+        version: link:../plugins/vue/text-ellipsis
       '@develop-plugins/water-mark':
-        specifier: ^0.0.9
+        specifier: workspace:*
         version: link:../plugins/vue/water-mark
       '@develop-plugins/x-message':
-        specifier: ^0.0.3
+        specifier: workspace:*
         version: link:../plugins/vue/x-message
       '@develop-plugins/x-scroll':
-        specifier: ^0.0.6
+        specifier: workspace:*
         version: link:../plugins/vue/x-scroll
     devDependencies:
       '@vicons/ionicons5':
@@ -495,12 +492,6 @@ packages:
   '@ctrl/tinycolor@3.6.1':
     resolution: {integrity: sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA==}
     engines: {node: '>=10'}
-
-  '@develop-plugins/text-ellipsis@0.0.3':
-    resolution: {integrity: sha512-k0rW6t6AUHKEb1We48sxF3+mK0KOmowdlWD8FtMsagc8FjqdLSpzknW9RpMmEyv6V0ng5IaY2egE/9f6KSuF2w==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      vue: ^3.0.0
 
   '@develop-plugins/x-message@0.0.2':
     resolution: {integrity: sha512-G0kAZKHGDP8LwIZ/jBKQnJW0Q9ANL3Z7qKddOC/N8fa3dXz9sffsugg5KnJrn68Nrelb9Bhg0EdeIODedpKJ9w==}
@@ -3688,10 +3679,6 @@ snapshots:
       vue: 3.5.22(typescript@4.1.2)
 
   '@ctrl/tinycolor@3.6.1': {}
-
-  '@develop-plugins/text-ellipsis@0.0.3(vue@3.5.22(typescript@4.1.2))':
-    dependencies:
-      vue: 3.5.22(typescript@4.1.2)
 
   '@develop-plugins/x-message@0.0.2(vue@3.4.27(typescript@4.1.2))':
     dependencies:
