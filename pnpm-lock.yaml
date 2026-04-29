@@ -50,12 +50,15 @@ importers:
       '@develop-plugins/directive':
         specifier: workspace:*
         version: link:../plugins/vue/directive
+      '@develop-plugins/excel-preview':
+        specifier: workspace:*
+        version: link:../plugins/vue/excel-preview
       '@develop-plugins/org-chart':
         specifier: workspace:*
         version: link:../plugins/vue/org-chart
       '@develop-plugins/pdf-export':
         specifier: workspace:*
-        version: link:../plugins/utils/pdf-export
+        version: link:../plugins/vue/pdf-export
       '@develop-plugins/pdf-preview':
         specifier: workspace:*
         version: link:../plugins/vue/pdf-preview
@@ -137,19 +140,6 @@ importers:
         specifier: workspace:^
         version: link:../../build
 
-  plugins/utils/pdf-export:
-    dependencies:
-      jspdf:
-        specifier: ^2.5.2
-        version: 2.5.2
-      jspdf-autotable:
-        specifier: ^3.8.4
-        version: 3.8.4(jspdf@2.5.2)
-    devDependencies:
-      '@develop-plugins/build':
-        specifier: workspace:^
-        version: link:../../../build
-
   plugins/vite/vite-build-git-info:
     devDependencies:
       '@develop-plugins/build':
@@ -205,6 +195,19 @@ importers:
       vue:
         specifier: ^3.0.0
         version: 3.5.33
+
+  plugins/vue/pdf-export:
+    dependencies:
+      jspdf:
+        specifier: ^2.5.2
+        version: 2.5.2
+      jspdf-autotable:
+        specifier: ^3.8.4
+        version: 3.8.4(jspdf@2.5.2)
+    devDependencies:
+      '@develop-plugins/build':
+        specifier: workspace:^
+        version: link:../../../build
 
   plugins/vue/pdf-preview:
     dependencies:

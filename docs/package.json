@@ -24,6 +24,7 @@
     "@develop-plugins/chart": "workspace:*",
     "@develop-plugins/directive": "workspace:*",
     "@develop-plugins/org-chart": "workspace:*",
+    "@develop-plugins/excel-preview": "workspace:*",
     "@develop-plugins/pdf-export": "workspace:*",
     "@develop-plugins/pdf-preview": "workspace:*",
     "@develop-plugins/seamless-table": "workspace:*",
