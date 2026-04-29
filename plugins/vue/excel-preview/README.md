@@ -21,7 +21,6 @@ npm install @develop-plugins/excel-preview
 
 ```javascript
 import { XExcelPreviewInstall } from '@develop-plugins/excel-preview';
-import '@develop-plugins/excel-preview/style.css';
 
 app.use(XExcelPreviewInstall);
 ```
@@ -41,7 +40,6 @@ app.use(XExcelPreviewInstall);
 
 <script setup>
 import { ExcelPreview } from '@develop-plugins/excel-preview';
-import '@develop-plugins/excel-preview/style.css';
 
 const excelData = ref(null);
 

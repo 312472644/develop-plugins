@@ -23,7 +23,6 @@ import ExcelPreview from "@develop-plugins/excel-preview";
 <script setup>
 import { ref } from 'vue'
 import ExcelPreview from "@develop-plugins/excel-preview";
-import '@develop-plugins/excel-preview/style.css'
 
 const excelData = ref();
 
@@ -37,7 +36,6 @@ const excelCode = `<template>
 
 <script setup>
 import ExcelPreview from '@develop-plugins/excel-preview'
-import '@develop-plugins/excel-preview/style.css'
 <\/script>`
 
 const uploadCode = `<template>
@@ -55,7 +53,6 @@ const uploadCode = `<template>
 <script setup>
 import { ref } from 'vue'
 import ExcelPreview from '@develop-plugins/excel-preview'
-import '@develop-plugins/excel-preview/style.css'
 
 const excelData = ref(null)
 const uploadFileName = ref('')
@@ -125,7 +122,6 @@ const echoCode = `<template>
 <script setup>
 import { ref } from 'vue'
 import ExcelPreview from '@develop-plugins/excel-preview'
-import '@develop-plugins/excel-preview/style.css'
 
 const echoData = ref(null)
 const loadingEcho = ref(false)
