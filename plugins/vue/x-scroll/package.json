@@ -1,7 +1,7 @@
 {
   "name": "@develop-plugins/x-scroll",
   "version": "0.0.6",
-  "description": "",
+  "description": "自定义滚动条组件，支持垂直和水平滚动，可自定义滚动条样式",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
