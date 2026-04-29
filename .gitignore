@@ -6,7 +6,7 @@ dist
 
 .idea
 
-/plugins/**/package-lock.json
+#/plugins/**/package-lock.json
 
 docs/.vitepress/cache/
 
