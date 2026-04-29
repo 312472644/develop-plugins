@@ -16,18 +16,7 @@ export default defineConfig({
       fileName: "index",
     },
     rollupOptions: {
-      // external: [
-      //   "vue",
-      //   "handsontable/i18n",
-      //   "handsontable/registry",
-      //   "@develop-plugins/x-message",
-      //   "handsontable",
-      //   "@handsontable/vue3",
-      // ],
-      external: [
-        "vue",
-        "@develop-plugins/x-message"
-      ],
+      external: ["vue", "handsontable/i18n", "@develop-plugins/x-message", "handsontable", "@handsontable/vue3"],
     },
   },
   esbuild: {
