@@ -16,14 +16,17 @@ export default defineConfig({
       fileName: "index",
     },
     rollupOptions: {
+      // external: [
+      //   "vue",
+      //   "handsontable/i18n",
+      //   "handsontable/registry",
+      //   "@develop-plugins/x-message",
+      //   "handsontable",
+      //   "@handsontable/vue3",
+      // ],
       external: [
         "vue",
-        "pdfjs-dist",
-        "handsontable/i18n",
-        "handsontable/registry",
-        "@develop-plugins/x-message",
-        "handsontable",
-        "@handsontable/vue3",
+        "@develop-plugins/x-message"
       ],
     },
   },
