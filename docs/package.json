@@ -23,7 +23,6 @@
   "dependencies": {
     "@develop-plugins/chart": "workspace:*",
     "@develop-plugins/directive": "workspace:*",
-    "@develop-plugins/excel-preview": "workspace:*",
     "@develop-plugins/org-chart": "workspace:*",
     "@develop-plugins/pdf-export": "workspace:*",
     "@develop-plugins/pdf-preview": "workspace:*",
