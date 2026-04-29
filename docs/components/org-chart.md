@@ -16,7 +16,6 @@ npm install @develop-plugins/org-chart
 
 ```javascript
 import OrgChart from "@develop-plugins/org-chart";
-import "@develop-plugins/org-chart/style.css";
 ```
 
 ### 基础用法
@@ -24,7 +23,6 @@ import "@develop-plugins/org-chart/style.css";
 <script setup>
 import { ref } from 'vue'
 import OrgChart from '@develop-plugins/org-chart'
-import '@develop-plugins/org-chart/style.css';
 import { createDiscreteApi } from 'naive-ui'
 
 const data = ref({

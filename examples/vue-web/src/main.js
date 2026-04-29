@@ -1,7 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import { OrgChartInstall } from "@develop-plugins/org-chart";
-import "@develop-plugins/org-chart/style.css";
 
 import { WaterMarkInstall } from "@develop-plugins/water-mark";
 import { TextEllipsisInstall } from "@develop-plugins/text-ellipsis";

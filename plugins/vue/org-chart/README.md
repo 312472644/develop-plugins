@@ -21,7 +21,6 @@
 
 ```javascript
 import { OrgChartInstall } from '@develop-plugins/org-chart';
-import '@develop-plugins/org-chart/style.css';
 
 app.use(OrgChartInstall);
 ```
