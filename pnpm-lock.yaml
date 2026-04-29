@@ -50,9 +50,6 @@ importers:
       '@develop-plugins/directive':
         specifier: workspace:*
         version: link:../plugins/vue/directive
-      '@develop-plugins/excel-preview':
-        specifier: workspace:*
-        version: link:../plugins/vue/excel-preview
       '@develop-plugins/org-chart':
         specifier: workspace:*
         version: link:../plugins/vue/org-chart
