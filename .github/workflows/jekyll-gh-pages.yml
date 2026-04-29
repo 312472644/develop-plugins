@@ -43,10 +43,8 @@ jobs:
         cache: pnpm # 或 pnpm / yarn
     - name: Setup Pages
       uses: actions/configure-pages@v4
-    - name: workspace link
-      run: pnpm install --no-frozen-lockfile 
     - name: Install dependencies
-      run: pnpm -filter @develop-plugins/docs i --no-frozen-lockfile # 或 pnpm install / yarn install / bun install
+      run: pnpm -filter @develop-plugins/docs i # 或 pnpm install / yarn install / bun install
     - name: Build with VitePress
       run: pnpm -filter @develop-plugins/docs run docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
     - name: Upload artifact

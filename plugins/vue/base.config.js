@@ -24,7 +24,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(process.cwd(), "index.js"),
-      formats: ["es"],
+      formats: ["es", "cjs"],
       fileName: "index",
     },
     rollupOptions: {
