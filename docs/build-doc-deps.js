@@ -1,8 +1,13 @@
 const { execSync } = require("child_process");
 const pkg = require("./package.json");
 
-// 是否需要重新安装依赖
-const dependenciesModules = ["@develop-plugins/excel-preview"];
+// 是否有第三方依赖库，如果有则需将依赖打包进文档
+const dependenciesModules = [
+  "@develop-plugins/chart",
+  "@develop-plugins/excel-preview",
+  "@develop-plugins/pdf-export",
+  "@develop-plugins/pdf-preview",
+];
 
 function getDeps() {
   const deps = [];
@@ -19,13 +24,14 @@ function executeBuild() {
   const deps = getDeps();
   for (const depName of deps) {
     if (dependenciesModules.includes(depName)) {
-      const installCmd = `pnpm --filter ${depName} i`;
-      console.log(`⚒️ 安装依赖: ${depName} 【${installCmd}】⚒️`);
+      const installCmd = `pnpm --filter ${depName} run build-doc`;
+      console.log(`⚒️ 构建依赖: ${depName} 【${installCmd}】⚒️`);
       execSync(installCmd, { stdio: "inherit" });
+    } else {
+      const buildCmd = `pnpm --filter ${depName} run build`;
+      console.log(`⚒️ 当前构建命令: 【${buildCmd}】⚒️`);
+      execSync(buildCmd, { stdio: "inherit" });
     }
-    const buildCmd = `pnpm --filter ${depName} run build`;
-    console.log(`⚒️ 当前构建命令: 【${buildCmd}】⚒️`);
-    execSync(buildCmd, { stdio: "inherit" });
   }
 }
 

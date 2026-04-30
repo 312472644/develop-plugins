@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "prepublishOnly": "npm run build",
-    "postpublish": "node ../version.js"
+    "build-doc": "vite build -- --is-build-doc",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "vue3",
@@ -39,7 +39,8 @@
   "dependencies": {
     "@develop-plugins/x-message": "^0.0.2",
     "@handsontable/vue3": "^15.2.0",
-    "exceljs": "^4.4.0"
+    "exceljs": "^4.4.0",
+    "handsontable": "^17.0.1"
   },
   "peerDependencies": {
     "vue": "^3.0.0"

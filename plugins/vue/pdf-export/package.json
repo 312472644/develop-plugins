@@ -6,7 +6,9 @@
   "module": "dist/index.js",
   "type": "module",
   "scripts": {
-    "build": "vite build"
+    "build": "vite build",
+    "build-doc": "vite build -- --is-build-doc",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "pdf",

@@ -5,7 +5,7 @@ import terser from "@rollup/plugin-terser";
 import path from "path";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
-export default defineConfig({
+export default defineConfig(() => ({
   plugins: [
     vue(),
     VueSetupExtend(),
@@ -28,10 +28,10 @@ export default defineConfig({
       fileName: "index",
     },
     rollupOptions: {
-      external: ["vue", "pdfjs-dist", "echarts", "ant-design-vue"],
+      external: ["vue"],
     },
   },
   esbuild: {
     drop: ["console", "debugger"],
   },
-});
+}));

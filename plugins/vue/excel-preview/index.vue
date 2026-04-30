@@ -92,8 +92,8 @@ import XMessage from "@develop-plugins/x-message";
 import ExcelExportWorker from './excel-export.worker.js?worker&inline';
 
 // 样式导入
-// import "handsontable/styles/handsontable.min.css";
-// import "handsontable/styles/ht-theme-main.min.css";
+import "handsontable/styles/handsontable.min.css";
+import "handsontable/styles/ht-theme-main.min.css";
 
 provide("XMessage", XMessage);
 

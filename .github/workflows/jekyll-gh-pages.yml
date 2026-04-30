@@ -42,10 +42,10 @@ jobs:
           node-version: 22
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      - name: 安装根依赖项 # 安装根依赖项
+      - name: 安装所有依赖项 # 安装根依赖项
         run: pnpm i
-      #- name: Install dependencies
-      #  run: pnpm -filter @develop-plugins/docs i # 或 pnpm install / yarn install / bun install
+      # - name: Install dependencies
+      #   run: pnpm -filter @develop-plugins/docs i # 或 pnpm install / yarn install / bun install
       - name: 构建文档依赖项
         run: pnpm -filter @develop-plugins/docs run docs:build-deps
       - name: 构建文档

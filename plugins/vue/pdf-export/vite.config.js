@@ -1,14 +1,20 @@
 import { defineConfig } from "vite";
+import viteBaseConfig from "../vite-dep-config";
 
-export default defineConfig({
-  build: {
-    lib: {
-      entry: "./index.js",
-      formats: ["es"],
-      fileName: "index",
-    },
-    rollupOptions: {
-      external: ["jspdf", "jspdf-autotable"],
-    },
-  },
-});
+const config = {
+  external: ["jspdf", "jspdf-autotable"],
+};
+
+export default defineConfig(viteBaseConfig({}, config));
+// export default defineConfig({
+//   build: {
+//     lib: {
+//       entry: "./index.js",
+//       formats: ["es"],
+//       fileName: "index",
+//     },
+//     rollupOptions: {
+//       external: ["jspdf", "jspdf-autotable"],
+//     },
+//   },
+// });
