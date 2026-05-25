@@ -1,3 +1,4 @@
+import { App } from 'vue'
 export interface ISeamlessTableColumn {
   title: string;
   key: string;
@@ -13,4 +14,8 @@ export interface ISeamlessTable {
   data: Record<string, any>[];
   height?: number | string;
   speed?: number;
+}
+
+export declare const SeamlessTableInstall: (app: App) => {
+  install(app: App): void;
 }

@@ -1,0 +1,48 @@
+{
+  "name": "@develop-plugins/vite-plugin-git-tag",
+  "version": "0.2.0",
+  "description": "vite插件，根据git tag生成版本号",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "type": "module",
+  "types": "./index.d.ts",
+  "scripts": {
+    "build": "vite build",
+    "prepublishOnly": "pnpm run build"
+  },
+  "keywords": [
+    "vite",
+    "plugin",
+    "build",
+    "git",
+    "tag"
+  ],
+  "author": "xx",
+  "license": "ISC",
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "homepage": "https://312472644.github.io/",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./index.d.ts"
+    }
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.4.0",
+    "chalk": "^5.6.2"
+  },
+  "devDependencies": {
+    "@develop-plugins/build": "workspace:^"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
