@@ -33,10 +33,6 @@ setx NODE_AUTH_TOKEN "npm_xxxxxxxxx"
 setx 不会更新当前窗口
 ```
 
----
-
----
-
 # 2. 验证是否成功
 
 CMD：
@@ -53,8 +49,6 @@ echo $env:NODE_AUTH_TOKEN
 
 如果能输出 token，就配置成功。
 
----
-
 # 3. 配置用户 `.npmrc`
 
 文件位置：
@@ -69,7 +63,13 @@ C:\Users\你的用户名\.npmrc
 //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
 ```
 
----
+可通过：
+
+```cmd
+cat ~/.npmrc
+```
+
+来查看全局npmrc配置。
 
 # 4. package.json
 
@@ -82,8 +82,6 @@ C:\Users\你的用户名\.npmrc
   }
 }
 ```
-
----
 
 # 4. 发布
 
@@ -109,15 +107,11 @@ pnpm changeset publish
 NODE_AUTH_TOKEN=npm_xxx
 ```
 
----
-
 ## `C:\Users\你\.npmrc`
 
 ```ini
 //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
 ```
-
----
 
 ## package.json
 
@@ -128,5 +122,3 @@ NODE_AUTH_TOKEN=npm_xxx
   }
 }
 ```
-
----
