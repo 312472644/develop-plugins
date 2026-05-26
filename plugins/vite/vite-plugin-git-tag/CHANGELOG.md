@@ -1,5 +1,11 @@
 # @develop-plugins/vite-plugin-git-tag
 
+## 0.5.0
+
+### Minor Changes
+
+- 将插件生命周期由 buildEnd 改为 closeBundle
+
 ## 0.4.0
 
 ### Minor Changes

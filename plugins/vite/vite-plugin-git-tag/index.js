@@ -11,11 +11,11 @@ import pico from "picocolors";
  * @returns
  */
 export default function vitePluginGitTag(params = {}) {
-  const { isCreatedTag, commitCount, isSyncTag, delay = 5 } = { ...{ isCreatedTag: true }, ...params };
+  const { isCreatedTag, commitCount, isSyncTag, delay = 1 } = { ...{ isCreatedTag: true }, ...params };
   return {
     name: "git-tag",
     apply: "build",
-    buildEnd() {
+    closeBundle() {
       if (!isCreatedTag) return;
       setTimeout(() => {
         console.log(`\n${pico.blue("【Git Tag】")}自动创建Git Tag标签\n\n`);

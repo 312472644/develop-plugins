@@ -10,7 +10,7 @@
     "changeset": "changeset",
     "version": "changeset version",
     "release": "changeset publish",
-    "publish": "changeset & changeset version & changeset publish",
+    "publish:all": "changeset && changeset version && changeset publish",
     "changelog:all": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "changelog:plugins": "node scripts/changelog-plugins.js",
     "build:docs": "pnpm -F @develop-plugins/docs run docs:build",
