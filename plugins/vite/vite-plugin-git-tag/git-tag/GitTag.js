@@ -1,6 +1,14 @@
 import { intro, outro, text, spinner, log, select, isCancel, group } from "@clack/prompts";
-import chalk from "chalk";
-import { executeCommand, getCurrentBranch, delay, getListByStdout, requiredItem, getCurrentDate } from "./utils.js";
+import pico from "picocolors";
+import {
+  executeCommand,
+  getCurrentBranch,
+  delay,
+  getListByStdout,
+  requiredItem,
+  getCurrentDate,
+  omitUndefined,
+} from "./utils.js";
 
 /**
  * GitTag类
@@ -10,7 +18,7 @@ import { executeCommand, getCurrentBranch, delay, getListByStdout, requiredItem,
  */
 class GitTag {
   constructor(config = {}) {
-    this.config = Object.assign({ commitCount: 10, isSyncTag: true }, config);
+    this.config = { ...{ commitCount: 10, isSyncTag: true }, ...omitUndefined(config) };
     this.tagInfo = {
       branch: "",
       commitHash: "",
@@ -55,6 +63,8 @@ class GitTag {
       // 输入Tag标签名称和说明信息
       await this.inputTagInfo();
     } catch (error) {
+      console.error(error);
+      outro(pico.red("拉取项目所有提交记录失败"));
       process.exit(1);
     }
   }
@@ -74,7 +84,7 @@ class GitTag {
             placeholder: "请输入Tag标签名称",
             initialValue: tagName,
             validate(value) {
-              if (value?.length === 0) return chalk.red(`请输入Tag标签名称`);
+              if (value?.length === 0) return pico.red(`请输入Tag标签名称`);
             },
           }),
         tagMessage: () =>
@@ -87,7 +97,7 @@ class GitTag {
       },
       {
         onCancel: () => {
-          outro(chalk.bgRed("用户取消输入Tag标签名称和说明信息"));
+          outro(pico.bgRed("用户取消输入Tag标签名称和说明信息"));
           process.exit(0);
         },
       }
@@ -98,7 +108,7 @@ class GitTag {
     // 检查Tag标签是否存在已存在
     const isExist = await this.checkTagIsExist();
     if (isExist) {
-      log.error(chalk.red(`Tag标签：【${this.tagInfo.tagName}】已存在`));
+      log.error(pico.red(`Tag标签：【${this.tagInfo.tagName}】已存在`));
       // 重新输入Tag标签名称和说明信息
       await this.inputTagInfo();
       return;
@@ -121,11 +131,11 @@ class GitTag {
       this.spinner.stop("创建Tag标签完成");
       // 同步Tag标签列表到本地仓库
       await this.syncRemoteTag();
-      outro(chalk.hex("#007bff")(`Tag标签：${tagInfo.tagName}创建成功`));
+      outro(pico.green(`Tag标签：${tagInfo.tagName}创建成功`));
     } catch (error) {
       // 删除本地Tag标签
       await executeCommand(`git tag -d ${tagInfo.tagName}`);
-      outro(chalk.red(`Tag标签：${tagInfo.tagName}创建失败`));
+      outro(pico.red(`Tag标签：${tagInfo.tagName}创建失败`));
       process.exit(1);
     } finally {
       this.clearTagInfo();
@@ -189,9 +199,8 @@ class GitTag {
    */
   handleIsCancel(value, message) {
     if (isCancel(value)) {
-      outro(chalk.red(message));
+      outro(pico.red(message));
       process.exit(0);
-      return null;
     }
     return value;
   }
@@ -204,9 +213,14 @@ class GitTag {
     };
   }
   init() {
-    intro(chalk.hex("#007bff")("开始创建Tag标签"));
-    // 从远端拉取项目所有分支列表
-    this.fetchRemoteBranch();
+    try {
+      intro(pico.blue("开始创建Tag标签"));
+      // 从远端拉取项目所有分支列表
+      this.fetchRemoteBranch();
+    } catch (error) {
+      outro(pico.red("初始化Tag标签失败", error));
+      process.exit(1);
+    }
   }
 }
 

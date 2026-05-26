@@ -1,5 +1,5 @@
-import { exec } from 'child_process';
-import chalk from 'chalk';
+import { exec } from "child_process";
+import pico from "picocolors";
 
 /**
  * 执行命令，返回命令执行结果
@@ -8,10 +8,10 @@ import chalk from 'chalk';
  * @description 执行命令，返回命令执行结果
  */
 export function executeCommand(command) {
-  if (!command) return Promise.reject('Command is required');
+  if (!command) return Promise.reject("Command is required");
 
   return new Promise((resolve, reject) => {
-    exec(command, { stdio: 'pipe' }, (err, stdout) => {
+    exec(command, { stdio: "pipe" }, (err, stdout) => {
       if (err) return reject(err);
       return resolve(stdout);
     });
@@ -34,7 +34,7 @@ export function delay(ms = 1000) {
  * @description 获取当前分支
  * */
 export async function getCurrentBranch() {
-  const currentBranch = await executeCommand('git branch --show-current');
+  const currentBranch = await executeCommand("git branch --show-current");
   return currentBranch.toString().trim();
 }
 
@@ -48,7 +48,7 @@ export function getListByStdout(stdout) {
   return stdout
     .toString()
     .trim()
-    .split('\n')
+    .split("\n")
     .filter((item) => Boolean(item));
 }
 
@@ -59,7 +59,7 @@ export function getListByStdout(stdout) {
  * @description 标记为必填项
  * */
 export function requiredItem(message) {
-  return `${chalk.red('* ')}${message}`;
+  return `${pico.red("* ")}${message}`;
 }
 
 /**
@@ -70,7 +70,17 @@ export function requiredItem(message) {
 export function getCurrentDate() {
   const currentDate = new Date();
   const year = currentDate.getFullYear();
-  const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
-  const day = currentDate.getDate().toString().padStart(2, '0');
+  const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+  const day = currentDate.getDate().toString().padStart(2, "0");
   return `${year}-${month}-${day}`;
+}
+
+/**
+ * 移除对象中值为undefined的属性
+ * @param {Object} obj - 输入对象
+ * @returns {Object}
+ * @description 移除对象中值为undefined的属性
+ * */
+export function omitUndefined(obj) {
+  return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v !== undefined));
 }

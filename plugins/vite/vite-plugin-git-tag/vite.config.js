@@ -6,10 +6,10 @@ export default defineConfig({
       entry: "./index.js",
       name: "GitTag",
       fileName: "index",
-      formats: ["es"],
+      formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["vite", "chalk", "@clack/prompts", "child_process"],
+      external: ["vite", "picocolors", "@clack/prompts", "child_process"],
     },
   },
 });

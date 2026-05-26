@@ -1,12 +1,12 @@
 {
   "name": "@develop-plugins/vite-plugin-git-tag",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "description": "vite插件，根据git tag生成版本号",
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
+  "main": "dist/index.js",
   "type": "module",
   "types": "./index.d.ts",
   "scripts": {
+    "run": "node ./index.js",
     "build": "vite build",
     "prepublishOnly": "pnpm run build"
   },
@@ -37,10 +37,7 @@
   },
   "dependencies": {
     "@clack/prompts": "^1.4.0",
-    "chalk": "^5.6.2"
-  },
-  "devDependencies": {
-    "@develop-plugins/build": "workspace:^"
+    "picocolors": "^1.1.1"
   },
   "engines": {
     "node": ">=18"
