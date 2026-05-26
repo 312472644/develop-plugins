@@ -2,11 +2,11 @@ import { Plugin } from 'vite';
 
 export interface GitTagOptions {
   // 获取的提交记录数量
-  commitCount: number;
+  commitCount?: number;
   // 标签创建成功后,是否同步Tag标签
-  isSyncTag: boolean;
+  isSyncTag?: boolean;
   // 是否创建Tag标签
-  isCreateTag: boolean;
+  isCreateTag?: boolean;
 }
 
 declare function ViteGitTag(options?: GitTagOptions): Plugin

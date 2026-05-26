@@ -1,5 +1,11 @@
 # @develop-plugins/vite-plugin-git-tag
 
+## 0.6.0
+
+### Minor Changes
+
+- 更新 inde.d.ts 声明文件
+
 ## 0.5.0
 
 ### Minor Changes
