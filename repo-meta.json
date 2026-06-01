@@ -1,0 +1,4 @@
+{
+  "name": "develop-plugins",
+  "plugins": [{ "name": "vue", "desc": "vue 插件目录", "url": "", "tags": ["vue", "chart"] }]
+}
