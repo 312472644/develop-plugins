@@ -164,10 +164,6 @@ importers:
       picocolors:
         specifier: ^1.1.1
         version: 1.1.1
-    devDependencies:
-      '@develop-plugins/build':
-        specifier: workspace:^
-        version: link:../../../build
 
   plugins/vue/chart:
     dependencies:
