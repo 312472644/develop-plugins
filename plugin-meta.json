@@ -1,0 +1,107 @@
+{
+  "name": "develop-plugins",
+  "plugins": [
+    {
+      "name": "@develop-plugins/chart",
+      "desc": "基于 ECharts 5.x 封装的 Vue3 图表组件，支持折线图、柱状图、饼图等多种图表类型，提供自动 resize、loading 状态、事件监听等功能，支持自定义主题和插槽。",
+      "url": "https://www.npmjs.com/package/@develop-plugins/chart",
+      "tags": ["vue3", "echarts", "chart", "visualization"]
+    },
+    {
+      "name": "@develop-plugins/x-message",
+      "desc": "轻量级消息提示组件，支持 success、error、warning、info 等多种类型，支持自定义位置、持续时间和图标，提供优雅的动画效果。",
+      "url": "https://www.npmjs.com/package/@develop-plugins/x-message",
+      "tags": ["vue3", "message", "notification", "toast"]
+    },
+    {
+      "name": "@develop-plugins/excel-preview",
+      "desc": "基于 Vue3 的 Excel 预览和编辑组件，支持导入导出 Excel 文件，支持在线编辑表格数据，提供工具栏和多 Sheet 切换功能。",
+      "url": "https://www.npmjs.com/package/@develop-plugins/excel-preview",
+      "tags": ["vue3", "excel", "spreadsheet", "import", "export"]
+    },
+    {
+      "name": "@develop-plugins/seamless-table",
+      "desc": "无缝循环滚动表格组件，适用于大屏数据展示场景。当表格内容高度超过容器时自动启动平滑的循环滚动动画，支持自定义滚动速度和方向。",
+      "url": "https://www.npmjs.com/package/@develop-plugins/seamless-table",
+      "tags": ["vue3", "table", "scroll", "seamless", "dashboard"]
+    },
+    {
+      "name": "@develop-plugins/vite-generate-zip",
+      "desc": "Vite 构建插件，在构建完成后自动将产物打包为 ZIP 文件，支持自定义输出路径、文件名和压缩级别。",
+      "url": "https://www.npmjs.com/package/@develop-plugins/vite-generate-zip",
+      "tags": ["vite", "plugin", "zip", "build"]
+    },
+    {
+      "name": "@develop-plugins/vite-build-git-info",
+      "desc": "Vite 插件，在构建时获取 Git 提交信息（分支、哈希、作者、时间等），并在浏览器控制台中以优雅的方式展示，方便开发调试和版本追踪。",
+      "url": "https://www.npmjs.com/package/@develop-plugins/vite-build-git-info",
+      "tags": ["vite", "plugin", "git", "commit", "debug"]
+    },
+    {
+      "name": "@develop-plugins/vite-plugin-git-tag",
+      "desc": "Vite 构建插件，在构建完成后自动创建 Git Tag 标签，支持交互式选择分支和提交记录，自动同步到远程仓库。",
+      "url": "https://www.npmjs.com/package/@develop-plugins/vite-plugin-git-tag",
+      "tags": ["vite", "plugin", "git", "tag", "version"]
+    },
+    {
+      "name": "@develop-plugins/webpack-generate-zip",
+      "desc": "Webpack 构建插件，在构建完成后自动将产物打包为 ZIP 文件，支持自定义输出路径、文件名和压缩级别。",
+      "url": "https://www.npmjs.com/package/@develop-plugins/webpack-generate-zip",
+      "tags": ["webpack", "plugin", "zip", "build"]
+    },
+    {
+      "name": "@develop-plugins/water-mark",
+      "desc": "页面水印组件，支持为指定区域添加自定义文字水印，可配置水印内容、字体大小、颜色、旋转角度和透明度。",
+      "url": "https://www.npmjs.com/package/@develop-plugins/water-mark",
+      "tags": ["vue3", "watermark", "security"]
+    },
+    {
+      "name": "@develop-plugins/directive",
+      "desc": "Vue3 指令集合，包含防抖(v-debounce)、复制(v-copy)、拖拽(v-draggable)、滚动监听(v-scroll)、可视性观察(v-is-visible)、多行省略(v-line-clamp)等常用指令。",
+      "url": "https://www.npmjs.com/package/@develop-plugins/directive",
+      "tags": ["vue3", "directive", "debounce", "copy", "draggable"]
+    },
+    {
+      "name": "@develop-plugins/text-ellipsis",
+      "desc": "文本省略组件，支持单行和多行省略，可自定义省略行数，使用原生 CSS -webkit-line-clamp 实现，性能优异。",
+      "url": "https://www.npmjs.com/package/@develop-plugins/text-ellipsis",
+      "tags": ["vue3", "ellipsis", "text", "truncate"]
+    },
+    {
+      "name": "@develop-plugins/pdf-export",
+      "desc": "PDF 导出组件，支持根据配置项生成 PDF 文件，可自定义标题、内容、样式，支持中文显示和自定义字体。",
+      "url": "https://www.npmjs.com/package/@develop-plugins/pdf-export",
+      "tags": ["vue3", "pdf", "export"]
+    },
+    {
+      "name": "@develop-plugins/pdf-preview",
+      "desc": "基于 Vue3 的 PDF 预览组件，支持在线预览 PDF 文件，提供页面导航、缩放、打印等功能，支持自定义工具栏。",
+      "url": "https://www.npmjs.com/package/@develop-plugins/pdf-preview",
+      "tags": ["vue3", "pdf", "preview"]
+    },
+    {
+      "name": "@develop-plugins/x-scroll",
+      "desc": "自定义滚动条组件，支持垂直和水平滚动，可自定义滚动条样式、宽度和圆角，提供平滑滚动体验。",
+      "url": "https://www.npmjs.com/package/@develop-plugins/x-scroll",
+      "tags": ["vue3", "scroll", "custom-scrollbar"]
+    },
+    {
+      "name": "@develop-plugins/org-chart",
+      "desc": "组织结构图组件，支持层级数据展示，提供垂直和水平两种布局方向，支持节点折叠展开和点击事件。",
+      "url": "https://www.npmjs.com/package/@develop-plugins/org-chart",
+      "tags": ["vue3", "org-chart", "organization", "tree"]
+    },
+    {
+      "name": "@develop-plugins/utils",
+      "desc": "工具函数库，包含常用的工具方法：对象操作、数组处理、日期格式化、Promise 工具、日志美化等，支持 Tree Shaking。",
+      "url": "https://www.npmjs.com/package/@develop-plugins/utils",
+      "tags": ["utils", "tools", "helper"]
+    },
+    {
+      "name": "@develop-plugins/hooks",
+      "desc": "Vue3 组合式函数集合，包含表单处理(useForm)、全屏控制(useFullscreen)、Promise 缓存(usePromiseCache)、URL 参数处理(useUrlSearchParams)等常用 hooks。",
+      "url": "https://www.npmjs.com/package/@develop-plugins/hooks",
+      "tags": ["vue3", "hooks", "composables"]
+    }
+  ]
+}
