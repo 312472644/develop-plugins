@@ -1,5 +1,11 @@
 # @develop-plugins/vite-plugin-git-tag
 
+## 0.9.0
+
+### Minor Changes
+
+- 钩子函数由 postinstall 改为 preinstall
+
 ## 0.8.0
 
 ### Minor Changes
