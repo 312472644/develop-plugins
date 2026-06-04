@@ -1,5 +1,17 @@
 # @develop-plugins/vite-plugin-git-tag
 
+## 0.8.0
+
+### Minor Changes
+
+- 校验文件加入到 files 中
+
+## 0.7.0
+
+### Minor Changes
+
+- node 版本依赖校验
+
 ## 0.6.0
 
 ### Minor Changes
